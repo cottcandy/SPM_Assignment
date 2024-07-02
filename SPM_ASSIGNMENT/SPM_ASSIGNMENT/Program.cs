@@ -1,0 +1,510 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+namespace NgeeAnnCity
+{
+    public enum BuildingType
+    {
+        Residential,
+        Industry,
+        Commercial,
+        Park,
+        Road
+    }
+
+    public class Program
+    {
+        private const int GridSize = 20;
+        private const int InitialCoins = 16;
+        private static int coins;
+        private static Building[,] grid = new Building[GridSize, GridSize];
+        private static List<Building> buildings = new List<Building>();
+        private static Random random = new Random();
+        private static int turnNumber = 1;
+        private static string playerName;
+
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to City Builder Game!");
+            Console.Write("Enter your name: ");
+            playerName = Console.ReadLine().Trim();
+            coins = InitialCoins;
+            DisplayMainMenu();
+        }
+
+        private static void DisplayMainMenu()
+        {
+            while (true)
+            {
+                Console.WriteLine($"Welcome, {playerName}!");
+                Console.WriteLine("");
+                Console.WriteLine("=== Main Menu ===");
+                Console.WriteLine("1. Start New Arcade Game");
+                Console.WriteLine("2. Start New Free Play Game");
+                Console.WriteLine("3. Load Saved Game");
+                Console.WriteLine("4. Display High Scores");
+                Console.WriteLine("5. Exit Game");
+
+                Console.Write("Choose an option (1-5): ");
+                string input = Console.ReadLine();
+
+                switch (input)
+                {
+                    case "1":
+                        StartArcadeGame();
+                        break;
+                    case "2":
+                        StartFreePlayGame();
+                        break;
+                    case "3":
+                        LoadSavedGame();
+                        break;
+                    case "4":
+                        // DisplayHighScores();
+                        break;
+                    case "5":
+                        Console.WriteLine("Exiting the game. Goodbye!");
+                        return;
+                    default:
+                        Console.WriteLine("Invalid option. Please choose again.");
+                        break;
+                }
+            }
+        }
+
+        private static void StartArcadeGame()
+        {
+            coins = InitialCoins;
+            turnNumber = 1;
+            grid = new Building[GridSize, GridSize];
+            buildings = new List<Building>();
+
+            Console.WriteLine($"Starting Arcade Game, {playerName}!");
+
+            StartArcade();
+        }
+
+        private static void StartFreePlayGame()
+        {
+            coins = InitialCoins;
+            turnNumber = 1;
+            grid = new Building[GridSize, GridSize];
+            buildings = new List<Building>();
+
+            Console.WriteLine($"Starting Free Play Game, {playerName}!");
+        }
+
+        private static void StartArcade()
+        {
+            bool isFirstTurn = true;
+            bool isSecondTurn = false;
+
+            while (coins > 0)
+            {
+                BuildingType[] options = GetUniqueRandomBuildings();
+                bool validInput = false;
+
+                while (!validInput)
+                {
+                    DisplayArcadeGrid();
+                    Console.WriteLine($"Turn: {turnNumber} | Coins: {coins} | Score: {CalculateScore()}");
+
+                    if (isFirstTurn)
+                    {
+                        Console.WriteLine(" ");
+                        Console.WriteLine("- The objective of this game is to build a city that scores as many points as possible.");
+                        Console.WriteLine("- For the first building, you can build anywhere in the city");
+                        Console.WriteLine("There are five types of buidings:");
+                        Console.WriteLine("- Residential (R): Each residential building generates 1 coin per turn. Each cluster of residential buildings (must be immediately next to each other) requires 1 coin per turn to upkeep.");
+                        Console.WriteLine("- Industry (I): Each industry generates 2 coins per turn and costs 1 coin per turn to upkeep.");
+                        Console.WriteLine("- Commercial (C): Each commercial generates 3 coins per turn and costs 2 coins per turn to upkeep.");
+                        Console.WriteLine("- Park (O): Each park costs 1 coin to upkeep.");
+                        Console.WriteLine("- Road (*): Each unconnected road segment costs 1 coin to upkeep.");
+                        Console.WriteLine(" ");
+                        Console.WriteLine($"Options: 1. {options[0]} 2. {options[1]}");
+                        Console.WriteLine("3. Select a cell with a building to demolish it (1 coin cost).");
+                        Console.WriteLine("4. Save Game");
+                        Console.WriteLine("5. Exit to Main Menu");
+                        Console.Write("Choose an option (1, 2, 3, 4, 5): ");
+                    }
+                    else if (isSecondTurn)
+                    {
+                        Console.WriteLine("<<< For subsequent constructions, you can only build on squares connected to existing buildings >>>");
+                        Console.WriteLine("3. Select a cell with a building to demolish it (1 coin cost).");
+                        Console.WriteLine("4. Save Game");
+                        Console.WriteLine("5. Exit to Main Menu");
+                        Console.Write("Choose an option (1, 2, 3, 4, 5): ");
+                    }
+                    else
+                    {
+                        Console.WriteLine("3. Select a cell with a building to demolish it (1 coin cost).");
+                        Console.WriteLine("4. Save Game");
+                        Console.WriteLine("5. Exit to Main Menu");
+                        Console.Write("Choose an option (1, 2, 3, 4, 5): ");
+                    }
+
+                    if (int.TryParse(Console.ReadLine(), out int choice) && (choice >= 1 && choice <= 5))
+                    {
+                        if (choice == 3 && isFirstTurn)
+                        {
+                            Console.WriteLine("You cannot demolish a building on the first turn.");
+                            continue;
+                        }
+
+                        switch (choice)
+                        {
+                            case 1:
+                            case 2:
+                                BuildingType selectedBuilding = options[choice - 1];
+                                Console.WriteLine($"You selected: {selectedBuilding}");
+
+                                if (isFirstTurn)
+                                {
+                                    (int x, int y) = GetBuildLocation(isFirstTurn);
+                                    if (IsValidLocation(x - 1, y - 1, isFirstTurn))
+                                    {
+                                        PlaceBuilding(selectedBuilding, x - 1, y - 1);
+                                        coins--;
+                                        UpdateCoins(selectedBuilding, x - 1, y - 1);
+                                        validInput = true;
+                                        isFirstTurn = false;
+                                        isSecondTurn = true;
+                                        turnNumber++;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Invalid location. Please try again.");
+                                    }
+                                }
+                                else
+                                {
+                                    (int x, int y) = GetBuildLocation(isFirstTurn);
+                                    if (IsValidLocation(x - 1, y - 1, isFirstTurn))
+                                    {
+                                        PlaceBuilding(selectedBuilding, x - 1, y - 1);
+                                        coins--;
+                                        UpdateCoins(selectedBuilding, x - 1, y - 1);
+                                        validInput = true;
+                                        isSecondTurn = false;
+                                        turnNumber++;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Invalid location. Please try again.");
+                                    }
+                                }
+                                break;
+                            case 3:
+                                if (!isFirstTurn)
+                                {
+                                    Console.WriteLine("Select a cell with a building to demolish it (1 coin cost), or key in X: 0 and Y: 0 to cancel.");
+                                    (int x, int y) = GetBuildLocation(isFirstTurn);
+
+                                    if (x == 0 && y == 0)
+                                    {
+                                        Console.WriteLine("Demolishing buildings cancelled.");
+                                        continue;
+                                    }
+
+                                    if (grid[x - 1, y - 1] != null)
+                                    {
+                                        RemoveBuilding(x - 1, y - 1);
+                                        coins++;
+                                        validInput = true;
+                                        turnNumber++;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("No building found at the selected location. Please try again.");
+                                    }
+                                }
+                                break;
+                            case 4:
+                                SaveGame();
+                                break;
+                            case 5:
+                                return; // Exit to Main Menu
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid option. Please choose 1, 2, 3, 4, or 5.");
+                    }
+                }
+            }
+
+            Console.WriteLine("Game Over! Final Score: " + CalculateScore());
+        }
+
+        private static void DisplayArcadeGrid()
+        {
+            // Print the column labels
+            Console.Write("     ");
+            for (int i = 1; i <= GridSize; i++)
+            {
+                if (i < 10)
+                {
+                    Console.Write($"X{i}  "); // Adjust spacing for single-digit numbers
+                }
+                else
+                {
+                    Console.Write($"X{i} "); // Maintain spacing for two-digit numbers
+                }
+            }
+            Console.WriteLine();
+
+            // Print the grid with row labels and borders
+            for (int i = 0; i < GridSize; i++)
+            {
+                // Print the top border of each cell row
+                if (i == 0)
+                {
+                    Console.Write("    ");
+                    for (int j = 0; j < GridSize; j++)
+                    {
+                        Console.Write("+---");
+                    }
+                    Console.WriteLine("+");
+                }
+
+                // Print the row label and cell contents with vertical borders
+                Console.Write($"Y{i + 1} ");
+                if (i < 9) Console.Write(" "); // align single-digit labels
+                for (int j = 0; j < GridSize; j++)
+                {
+                    Console.Write("|");
+                    if (grid[i, j] != null)
+                    {
+                        switch (grid[i, j].Type)
+                        {
+                            case BuildingType.Residential:
+                                Console.Write(" R ");
+                                break;
+                            case BuildingType.Industry:
+                                Console.Write(" I ");
+                                break;
+                            case BuildingType.Commercial:
+                                Console.Write(" C ");
+                                break;
+                            case BuildingType.Park:
+                                Console.Write(" O ");
+                                break;
+                            case BuildingType.Road:
+                                Console.Write(" * ");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Console.Write("   ");
+                    }
+                }
+                Console.WriteLine("|");
+
+                // Print the bottom border of each cell row
+                Console.Write("    ");
+                for (int j = 0; j < GridSize; j++)
+                {
+                    Console.Write("+---");
+                }
+                Console.WriteLine("+");
+            }
+        }
+
+        private static void SaveGame()
+        {
+            string fileName = $"{playerName}_save.txt";
+            using (StreamWriter writer = new StreamWriter(fileName))
+            {
+                writer.WriteLine(playerName);
+                writer.WriteLine(coins);
+                writer.WriteLine(turnNumber);
+                writer.WriteLine(CalculateScore());
+
+                for (int i = 0; i < GridSize; i++)
+                {
+                    for (int j = 0; j < GridSize; j++)
+                    {
+                        if (grid[i, j] != null)
+                        {
+                            writer.WriteLine($"{i},{j},{grid[i, j].Type}");
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine("Game saved successfully.");
+        }
+
+        private static void LoadSavedGame()
+        {
+            Console.Write("Enter the name of the saved game file: ");
+            string fileName = Console.ReadLine().Trim();
+
+            if (File.Exists(fileName))
+            {
+                using (StreamReader reader = new StreamReader(fileName))
+                {
+                    playerName = reader.ReadLine();
+                    coins = int.Parse(reader.ReadLine());
+                    turnNumber = int.Parse(reader.ReadLine());
+
+                    grid = new Building[GridSize, GridSize];
+                    buildings = new List<Building>();
+
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        string[] parts = line.Split(',');
+                        int x = int.Parse(parts[0]);
+                        int y = int.Parse(parts[1]);
+                        BuildingType type = (BuildingType)Enum.Parse(typeof(BuildingType), parts[2]);
+
+                        Building building = new Building(type, x, y);
+                        grid[x, y] = building;
+                        buildings.Add(building);
+                    }
+                }
+
+                Console.WriteLine("Game loaded successfully.");
+                StartArcade();
+            }
+            else
+            {
+                Console.WriteLine("Saved game file not found.");
+            }
+        }
+
+        private static (int x, int y) GetBuildLocation(bool isFirstTurn)
+        {
+            if (isFirstTurn)
+            {
+                Console.Write("Enter X (1-20): ");
+                int x = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter Y (1-20): ");
+                int y = int.Parse(Console.ReadLine());
+
+                return (x, y);
+            }
+            else
+            {
+                Console.Write("Enter X (1-20): ");
+                int x = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter Y (1-20): ");
+                int y = int.Parse(Console.ReadLine());
+
+                return (x, y);
+            }
+        }
+
+        private static bool IsValidLocation(int x, int y, bool isFirstTurn)
+        {
+            if (isFirstTurn)
+            {
+                return grid[x, y] == null;
+            }
+            else
+            {
+                return grid[x, y] == null && HasAdjacentBuilding(x, y);
+            }
+        }
+
+        private static bool HasAdjacentBuilding(int x, int y)
+        {
+            int[] dx = { -1, 1, 0, 0 };
+            int[] dy = { 0, 0, -1, 1 };
+
+            for (int i = 0; i < 4; i++)
+            {
+                int nx = x + dx[i];
+                int ny = y + dy[i];
+
+                if (nx >= 0 && nx < GridSize && ny >= 0 && ny < GridSize)
+                {
+                    if (grid[nx, ny] != null)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private static BuildingType[] GetUniqueRandomBuildings()
+        {
+            List<BuildingType> buildingTypes = Enum.GetValues(typeof(BuildingType)).Cast<BuildingType>().ToList();
+            BuildingType[] options = new BuildingType[2];
+
+            for (int i = 0; i < 2; i++)
+            {
+                int index = random.Next(buildingTypes.Count);
+                options[i] = buildingTypes[index];
+                buildingTypes.RemoveAt(index);
+            }
+
+            return options;
+        }
+
+        private static void PlaceBuilding(BuildingType type, int x, int y)
+        {
+            Building building = new Building(type, x, y);
+            grid[x, y] = building;
+            buildings.Add(building);
+        }
+
+        private static void RemoveBuilding(int x, int y)
+        {
+            Building building = grid[x, y];
+            buildings.Remove(building);
+            grid[x, y] = null;
+        }
+
+        private static void UpdateCoins(BuildingType type, int x, int y)
+        {
+            switch (type)
+            {
+                case BuildingType.Residential:
+                    coins += 1;
+                    break;
+                case BuildingType.Industry:
+                    coins += 2;
+                    break;
+                case BuildingType.Commercial:
+                    coins += 3;
+                    break;
+                case BuildingType.Park:
+                    coins -= 1;
+                    break;
+                case BuildingType.Road:
+                    coins -= 1;
+                    break;
+            }
+        }
+
+        private static int CalculateScore()
+        {
+            // Simple scoring mechanism
+            int score = buildings.Count * 10;
+            return score;
+        }
+    }
+
+    public class Building
+    {
+        public BuildingType Type { get; }
+        public int X { get; }
+        public int Y { get; }
+
+        public Building(BuildingType type, int x, int y)
+        {
+            Type = type;
+            X = x;
+            Y = y;
+        }
+    }
+}
