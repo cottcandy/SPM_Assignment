@@ -141,6 +141,7 @@ namespace NgeeAnnCity
                     else if (isSecondTurn)
                     {
                         Console.WriteLine("<<< For subsequent constructions, you can only build on squares connected to existing buildings >>>");
+                        Console.WriteLine($"Options: 1. {options[0]} 2. {options[1]}");
                         Console.WriteLine("3. Select a cell with a building to demolish it (1 coin cost).");
                         Console.WriteLine("4. Save Game");
                         Console.WriteLine("5. Exit to Main Menu");
@@ -328,7 +329,7 @@ namespace NgeeAnnCity
 
             while (coins > 0)
             {
-                BuildingType[] options = GetUniqueRandomBuildings();
+                BuildingType[] options = GetRandomBuildingOptions();
                 bool validInput = false;
 
                 while (!validInput)
@@ -348,14 +349,15 @@ namespace NgeeAnnCity
                         Console.WriteLine("- Park (O): Each park costs 1 coin to upkeep.");
                         Console.WriteLine("- Road (*): Each unconnected road segment costs 1 coin to upkeep.");
                         Console.WriteLine();
-                        Console.WriteLine($"Options: 1. {options[0]} 2. {options[1]}");
-                        Console.WriteLine("3. Select a cell with a building to demolish it.");
-                        Console.WriteLine("4. Save Game");
-                        Console.WriteLine("5. Exit to Main Menu");
-                        Console.Write("Choose an option (1, 2, 3, 4, 5): ");
+                        Console.WriteLine($"Options: 1. {options[0]} 2. {options[1]} 3. {options[2]} 4. {options[3]}  5. {options[4]}");
+                        Console.WriteLine("6. Select a cell with a building to demolish it.");
+                        Console.WriteLine("7. Save Game");
+                        Console.WriteLine("8. Exit to Main Menu");
+                        Console.Write("Choose an option (1, 2, 3, 4, 5, 6, 7, 8): ");
                     }
                     else
                     {
+                        Console.WriteLine($"Options: 1. {options[0]} 2. {options[1]} 3. {options[2]} 4. {options[3]}  5. {options[4]}");
                         Console.WriteLine("3. Select a cell with a building to demolish it.");
                         Console.WriteLine("4. Save Game");
                         Console.WriteLine("5. Exit to Main Menu");
@@ -364,6 +366,12 @@ namespace NgeeAnnCity
 
                     if (int.TryParse(Console.ReadLine(), out int choice) && (choice >= 1 && choice <= 5))
                     {
+                        if (choice == 3 && isFirstTurn)
+                        {
+                            Console.WriteLine("You cannot demolish a building on the first turn.");
+                            continue;
+                        }
+
                         switch (choice)
                         {
                             case 1:
@@ -390,24 +398,27 @@ namespace NgeeAnnCity
                                 }
                                 break;
                             case 3:
-                                Console.WriteLine("Select a cell with a building to demolish it, or key in X: 0 and Y: 0 to cancel.");
-                                (int x2, int y2) = GetBuildLocation(isFirstTurn);
+                                if (!isFirstTurn)
+                                {
+                                    Console.WriteLine("Select a cell with a building to demolish it, or key in X: 0 and Y: 0 to cancel.");
+                                    (int x2, int y2) = GetBuildLocation(isFirstTurn);
 
-                                if (x2 == 0 && y2 == 0)
-                                {
-                                    Console.WriteLine("Demolishing buildings cancelled.");
-                                    continue;
-                                }
+                                    if (x2 == 0 && y2 == 0)
+                                    {
+                                        Console.WriteLine("Demolishing buildings cancelled.");
+                                        continue;
+                                    }
 
-                                if (grid[x2 - 1, y2 - 1] != null)
-                                {
-                                    RemoveBuilding(x2 - 1, y2 - 1);
-                                    validInput = true;
-                                    turnNumber++;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("No building found at the selected location. Please try again.");
+                                    if (grid[x2 - 1, y2 - 1] != null)
+                                    {
+                                        RemoveBuilding(x2 - 1, y2 - 1);
+                                        validInput = true;
+                                        turnNumber++;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("No building found at the selected location. Please try again.");
+                                    }
                                 }
                                 break;
                             case 4:
@@ -508,18 +519,26 @@ namespace NgeeAnnCity
 
         private static void ExpandGrid()
         {
-            int newSize = Math.Min(grid.GetLength(0) + 10, MaxGridSize);
+            if (gridSize >= MaxGridSize)
+            {
+                Console.WriteLine("Maximum grid size reached. Cannot expand further.");
+                return;
+            } 
+
+            int newSize = Math.Min(gridSize + GridSizeIncrement, MaxGridSize);
             Building[,] newGrid = new Building[newSize, newSize];
 
-            for (int i = 0; i < grid.GetLength(0); i++)
+            for (int i = 0; i < gridSize; i++)
             {
-                for (int j = 0; j < grid.GetLength(1); j++)
+                for (int j = 0; j < gridSize; j++)
                 {
                     newGrid[i, j] = grid[i, j];
                 }
             }
 
             grid = newGrid;
+            gridSize = newSize;
+
             Console.WriteLine($"The city has expanded to {newSize}x{newSize}.");
         }
 
@@ -660,6 +679,29 @@ namespace NgeeAnnCity
             return options;
         }
 
+        private static BuildingType[] GetRandomBuildingOptions()
+        {
+            BuildingType[] allBuildingTypes = (BuildingType[])Enum.GetValues(typeof(BuildingType));
+
+            // Shuffle the array to get random order
+            Shuffle(allBuildingTypes);
+
+            // Return the first two elements (or fewer if there are fewer than 2 types)
+            return allBuildingTypes.Take(5).ToArray();
+        }
+
+        private static void Shuffle<T>(T[] array)
+        {
+            int n = array.Length;
+            while (n > 1)
+            {
+                int k = random.Next(n--);
+                T temp = array[n];
+                array[n] = array[k];
+                array[k] = temp;
+            }
+        }
+
         private static void PlaceBuilding(BuildingType type, int x, int y)
         {
             Building building = new Building(type, x, y);
@@ -672,6 +714,25 @@ namespace NgeeAnnCity
             Building building = grid[x, y];
             buildings.Remove(building);
             grid[x, y] = null;
+
+            switch (building.Type)
+            {
+                case BuildingType.Residential:
+                    coins -= 1;
+                    break;
+                case BuildingType.Industry:
+                    coins -= 2;
+                    break;
+                case BuildingType.Commercial:
+                    coins -= 3;
+                    break;
+                case BuildingType.Park:
+                    coins += 1;
+                    break;
+                case BuildingType.Road:
+                    coins += 1;
+                    break;
+            }
         }
 
         private static void UpdateCoins(BuildingType type, int x, int y)
