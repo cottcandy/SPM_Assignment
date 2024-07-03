@@ -16,7 +16,8 @@ namespace NgeeAnnCity
 
     public class Program
     {
-        private const int InitialGridSize = 5;
+        private const int ArcadeGridSize = 20;
+         private const int FreePlayInitialGridSize = 5;
         private const int GridSizeIncrement = 10;
         private const int MaxGridSize = 25;
         private const int InitialCoins = 16;
@@ -26,7 +27,7 @@ namespace NgeeAnnCity
         private static Random random = new Random();
         private static int turnNumber = 1;
         private static string playerName;
-        private static int gridSize = InitialGridSize;
+        private static int gridSize;
 
 
         public static void Main(string[] args)
@@ -82,6 +83,7 @@ namespace NgeeAnnCity
         {
             coins = InitialCoins;
             turnNumber = 1;
+            gridSize = ArcadeGridSize;
             grid = new Building[gridSize, gridSize];
             buildings = new List<Building>();
 
@@ -94,6 +96,7 @@ namespace NgeeAnnCity
         {
             coins = InitialCoins;
             turnNumber = 1;
+            gridSize = FreePlayInitialGridSize;
             grid = new Building[gridSize, gridSize];
             buildings = new List<Building>();
 
