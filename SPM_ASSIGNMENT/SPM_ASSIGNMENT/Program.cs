@@ -18,7 +18,6 @@ namespace NgeeAnnCity
     {
         private const int ArcadeGridSize = 20;
         private const int FreePlayInitialGridSize = 5;
-        private const int FreePlayInitialGridSize = 5;
         private const int GridSizeIncrement = 10;
         private const int MaxGridSize = 25;
         private const int InitialCoins = 16;
@@ -620,8 +619,7 @@ namespace NgeeAnnCity
 
         private static (int x, int y) GetBuildLocation(bool isFirstTurn)
         {
-            if (isFirstTurn)
-            {
+           
                 Console.Write("Enter X (1-20): ");
                 int x = int.Parse(Console.ReadLine());
 
@@ -630,19 +628,8 @@ namespace NgeeAnnCity
                 Console.WriteLine("");
 
                 return (x, y);
-            }
-            else
-            {
-                Console.Write("Enter X (1-20): ");
-                int x = int.Parse(Console.ReadLine());
-
-                Console.Write("Enter Y (1-20): ");
-                int y = int.Parse(Console.ReadLine());
-                Console.WriteLine("");
-
-                return (x, y);
-            }
         }
+            
 
         private static bool IsValidLocation(int x, int y, bool isFirstTurn)
         {
@@ -661,6 +648,8 @@ namespace NgeeAnnCity
             int[] dx = { -1, 1, 0, 0 };
             int[] dy = { 0, 0, -1, 1 };
 
+            Console.WriteLine($"Checking adjacency for ({x}, {y})");
+
             for (int i = 0; i < 4; i++)
             {
                 int nx = x + dx[i];
@@ -670,11 +659,12 @@ namespace NgeeAnnCity
                 {
                     if (grid[nx, ny] != null)
                     {
+                        Console.WriteLine($"Adjacent building found at ({nx}, {ny})");
                         return true;
                     }
                 }
             }
-
+            Console.WriteLine("No adjacent building found.");
             return false;
         }
 
@@ -730,8 +720,8 @@ namespace NgeeAnnCity
 
         private static void PlaceBuilding(BuildingType type, int x, int y)
         {
-            Building building = new Building(type, x, y);
-            grid[x, y] = building;
+            Building building = new Building(type, y, x);
+            grid[y, x] = building;
             buildings.Add(building);
         }
 
