@@ -1,0 +1,15 @@
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.exe
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.deps.json
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.runtimeconfig.json
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.dll
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.pdb
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.AssemblyInfoInputs.cache
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.AssemblyInfo.cs
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.csproj.CoreCompileInputs.cache
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.sourcelink.json
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.dll
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\refint\SPM_ASSIGNMENT.dll
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.pdb
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.genruntimeconfig.cache
+c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\ref\SPM_ASSIGNMENT.dll
