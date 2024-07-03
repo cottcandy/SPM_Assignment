@@ -329,7 +329,7 @@ namespace NgeeAnnCity
 
             while (coins > 0)
             {
-                BuildingType[] options = GetRandomBuildingOptions();
+                BuildingType[] options = GetFixedBuildingOptions();
                 bool validInput = false;
 
                 while (!validInput)
@@ -349,94 +349,88 @@ namespace NgeeAnnCity
                         Console.WriteLine("- Park (O): Each park costs 1 coin to upkeep.");
                         Console.WriteLine("- Road (*): Each unconnected road segment costs 1 coin to upkeep.");
                         Console.WriteLine();
-                        Console.WriteLine($"Options: 1. {options[0]} 2. {options[1]} 3. {options[2]} 4. {options[3]}  5. {options[4]}");
-                        Console.WriteLine("6. Select a cell with a building to demolish it.");
-                        Console.WriteLine("7. Save Game");
-                        Console.WriteLine("8. Exit to Main Menu");
-                        Console.Write("Choose an option (1, 2, 3, 4, 5, 6, 7, 8): ");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Options: 1. {options[0]} 2. {options[1]} 3. {options[2]} 4. {options[3]}  5. {options[4]}");
-                        Console.WriteLine("3. Select a cell with a building to demolish it.");
-                        Console.WriteLine("4. Save Game");
-                        Console.WriteLine("5. Exit to Main Menu");
-                        Console.Write("Choose an option (1, 2, 3, 4, 5): ");
                     }
 
-                    if (int.TryParse(Console.ReadLine(), out int choice) && (choice >= 1 && choice <= 5))
+                    Console.WriteLine($"Options: 1. {options[0]} 2. {options[1]} 3. {options[2]} 4. {options[3]} 5. {options[4]}");
+                    Console.WriteLine("6. Select a cell with a building to demolish it.");
+                    Console.WriteLine("7. Save Game");
+                    Console.WriteLine("8. Exit to Main Menu");
+                    Console.Write("Choose an option (1, 2, 3, 4, 5, 6, 7, 8): ");
+
+                    string userInput = Console.ReadLine();
+
+                    switch (userInput)
                     {
-                        if (choice == 3 && isFirstTurn)
-                        {
-                            Console.WriteLine("You cannot demolish a building on the first turn.");
-                            continue;
-                        }
+                        case "1":
+                        case "2":
+                        case "3":
+                        case "4":
+                        case "5":
+                            int choice = int.Parse(userInput);
+                            BuildingType selectedBuilding = options[choice - 1];
+                            Console.WriteLine($"You selected: {selectedBuilding}");
 
-                        switch (choice)
-                        {
-                            case 1:
-                            case 2:
-                                BuildingType selectedBuilding = options[choice - 1];
-                                Console.WriteLine($"You selected: {selectedBuilding}");
-
-                                (int x, int y) = GetBuildLocation(isFirstTurn);
-                                if (IsValidLocation(x - 1, y - 1, isFirstTurn))
+                            (int x, int y) = GetBuildLocation(isFirstTurn);
+                            if (IsValidLocationFreePlay(x - 1, y - 1))
+                            {
+                                PlaceBuilding(selectedBuilding, x - 1, y - 1);
+                                UpdateCoins(selectedBuilding, x - 1, y - 1);
+                                validInput = true;
+                                isFirstTurn = false;
+                                turnNumber++;
+                                if (x == 1 || y == 1 || x == gridSize || y == gridSize)
                                 {
-                                    PlaceBuilding(selectedBuilding, x - 1, y - 1);
-                                    UpdateCoins(selectedBuilding, x - 1, y - 1);
+                                    ExpandGrid();
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid location. Please try again.");
+                            }
+                            break;
+                        case "6":
+                            if (!isFirstTurn)
+                            {
+                                Console.WriteLine("Select a cell with a building to demolish it, or key in X: 0 and Y: 0 to cancel.");
+                                (int x2, int y2) = GetBuildLocation(isFirstTurn);
+
+                                if (x2 == 0 && y2 == 0)
+                                {
+                                    Console.WriteLine("Demolishing buildings cancelled.");
+                                    continue;
+                                }
+
+                                if (grid[x2 - 1, y2 - 1] != null)
+                                {
+                                    RemoveBuilding(x2 - 1, y2 - 1);
                                     validInput = true;
-                                    isFirstTurn = false;
                                     turnNumber++;
-                                    if (x == 1 || y == 1 || x == gridSize || y == gridSize)
-                                    {
-                                        ExpandGrid();
-                                    }
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Invalid location. Please try again.");
+                                    Console.WriteLine("No building found at the selected location. Please try again.");
                                 }
-                                break;
-                            case 3:
-                                if (!isFirstTurn)
-                                {
-                                    Console.WriteLine("Select a cell with a building to demolish it, or key in X: 0 and Y: 0 to cancel.");
-                                    (int x2, int y2) = GetBuildLocation(isFirstTurn);
-
-                                    if (x2 == 0 && y2 == 0)
-                                    {
-                                        Console.WriteLine("Demolishing buildings cancelled.");
-                                        continue;
-                                    }
-
-                                    if (grid[x2 - 1, y2 - 1] != null)
-                                    {
-                                        RemoveBuilding(x2 - 1, y2 - 1);
-                                        validInput = true;
-                                        turnNumber++;
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("No building found at the selected location. Please try again.");
-                                    }
-                                }
-                                break;
-                            case 4:
-                                SaveGame();
-                                break;
-                            case 5:
-                                return; // Exit to Main Menu
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid option. Please choose 1, 2, 3, 4, or 5.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("You cannot demolish a building on the first turn.");
+                            }
+                            break;
+                        case "7":
+                            SaveGame();
+                            break;
+                        case "8":
+                            return; // Exit to Main Menu
+                        default:
+                            Console.WriteLine("Invalid option. Please choose a valid option (1, 2, 3, 4, 5, 6, 7, 8).");
+                            break;
                     }
                 }
             }
 
             Console.WriteLine("Game Over! Final Score: " + CalculateScore());
         }
+
 
         private static void DisplayFreePlayGrid()
         {
@@ -664,6 +658,27 @@ namespace NgeeAnnCity
             return false;
         }
 
+        private static bool IsValidLocationFreePlay(int x, int y)
+        {
+            // Check if coordinates are within grid bounds
+            if (x < 0 || x >= gridSize || y < 0 || y >= gridSize)
+            {
+                Console.WriteLine("Selected location is outside the grid bounds.");
+                return false;
+            }
+
+            // Check if the cell is already occupied
+            if (grid[x, y] != null)
+            {
+                Console.WriteLine("There is already a building at the selected location.");
+                return false;
+            }
+
+            // All conditions met, location is valid for Free Play mode
+            return true;
+        }
+
+
         private static BuildingType[] GetUniqueRandomBuildings()
         {
             List<BuildingType> buildingTypes = Enum.GetValues(typeof(BuildingType)).Cast<BuildingType>().ToList();
@@ -679,27 +694,18 @@ namespace NgeeAnnCity
             return options;
         }
 
-        private static BuildingType[] GetRandomBuildingOptions()
+        private static BuildingType[] GetFixedBuildingOptions()
         {
-            BuildingType[] allBuildingTypes = (BuildingType[])Enum.GetValues(typeof(BuildingType));
-
-            // Shuffle the array to get random order
-            Shuffle(allBuildingTypes);
-
-            // Return the first two elements (or fewer if there are fewer than 2 types)
-            return allBuildingTypes.Take(5).ToArray();
-        }
-
-        private static void Shuffle<T>(T[] array)
-        {
-            int n = array.Length;
-            while (n > 1)
+            BuildingType[] fixedBuildingOptions = new BuildingType[]
             {
-                int k = random.Next(n--);
-                T temp = array[n];
-                array[n] = array[k];
-                array[k] = temp;
-            }
+                BuildingType.Residential,
+                BuildingType.Commercial,
+                BuildingType.Industry,
+                BuildingType.Park,
+                BuildingType.Road
+            };
+
+            return fixedBuildingOptions;
         }
 
         private static void PlaceBuilding(BuildingType type, int x, int y)

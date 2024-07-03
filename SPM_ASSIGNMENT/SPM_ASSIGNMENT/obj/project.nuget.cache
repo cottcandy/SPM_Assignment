@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7zCv959XC+gU+cPrtJe8vds3BKbfnpf0y44/2K3XqKlz9/8l3WhDFPdX+yOLUFb0h28llfLXYN9fqqs8RN+0Ww==",
+  "dgSpecHash": "k69yxpHSUxX3jdZsidWBt+YBtQXq0NlR+Se0Q8FVj6uSdO8+k9+Lr7ClpeLdB02F+AHuYY5m2XtWvC60KZUJ6A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yulin\\OneDrive - Ngee Ann Polytechnic\\NP\\semester 3 2024\\SPM\\Assignment 1\\SPM\\SPM_ASSIGNMENT\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+  "projectFilePath": "C:\\Users\\yulin\\OneDrive - Ngee Ann Polytechnic\\NP\\semester 3 2024\\SPM\\Assignment 1\\SPM\\SPM2\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\yulin\\OneDrive - Ngee Ann Polytechnic\\NP\\semester 3 2024\\SPM\\Assignment 1\\SPM\\SPM_ASSIGNMENT\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

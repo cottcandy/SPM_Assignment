@@ -29,7 +29,6 @@ C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project managemen
 C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.pdb
 C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.genruntimeconfig.cache
 C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\ref\SPM_ASSIGNMENT.dll
-<<<<<<< HEAD
 C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM_ASSIGNMENT\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.exe
 C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM_ASSIGNMENT\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.deps.json
 C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM_ASSIGNMENT\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.runtimeconfig.json
@@ -44,6 +43,19 @@ C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment
 C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM_ASSIGNMENT\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.pdb
 C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM_ASSIGNMENT\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.genruntimeconfig.cache
 C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM_ASSIGNMENT\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\ref\SPM_ASSIGNMENT.dll
-=======
 >>>>>>> 7dac5e695ec34cab8ff4ceb4c93c9977a79812f5
 >>>>>>> 41d2c19e8dda7a297e7362183cff13f44f5a94f2
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.exe
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.deps.json
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.runtimeconfig.json
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.dll
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.pdb
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.AssemblyInfoInputs.cache
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.AssemblyInfo.cs
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.csproj.CoreCompileInputs.cache
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.dll
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\refint\SPM_ASSIGNMENT.dll
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.pdb
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.genruntimeconfig.cache
+C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM2\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\ref\SPM_ASSIGNMENT.dll
