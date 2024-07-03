@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.exe
 c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.deps.json
 c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.runtimeconfig.json
@@ -13,3 +14,19 @@ c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMEN
 c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.pdb
 c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.genruntimeconfig.cache
 c:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\ref\SPM_ASSIGNMENT.dll
+=======
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.exe
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.deps.json
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.runtimeconfig.json
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.dll
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.pdb
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.AssemblyInfoInputs.cache
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.AssemblyInfo.cs
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.csproj.CoreCompileInputs.cache
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.dll
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\refint\SPM_ASSIGNMENT.dll
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.pdb
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.genruntimeconfig.cache
+C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\ref\SPM_ASSIGNMENT.dll
+>>>>>>> 7dac5e695ec34cab8ff4ceb4c93c9977a79812f5
