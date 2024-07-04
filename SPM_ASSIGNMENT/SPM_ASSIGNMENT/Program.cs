@@ -103,7 +103,6 @@ namespace NgeeAnnCity
             Console.WriteLine($"Starting Free Play Game, {playerName}!");
 
             StartFreePlay();
-            StartFreePlay();
         }
 
         private static void StartArcade()
@@ -355,7 +354,6 @@ namespace NgeeAnnCity
                         Console.WriteLine("- Commercial (C): Each commercial generates 3 coins per turn and costs 2 coins per turn to upkeep.");
                         Console.WriteLine("- Park (O): Each park costs 1 coin to upkeep.");
                         Console.WriteLine("- Road (*): Each unconnected road segment costs 1 coin to upkeep.");
-                        Console.WriteLine();
                     }
 
                     Console.WriteLine("");
