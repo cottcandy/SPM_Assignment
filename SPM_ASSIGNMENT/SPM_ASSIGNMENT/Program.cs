@@ -126,7 +126,6 @@ namespace NgeeAnnCity
                         Console.WriteLine(" ");
                         Console.WriteLine("- The objective of this game is to build a city that scores as many points as possible.");
                         Console.WriteLine("- For the first building, you can build anywhere in the city.");
-                        Console.WriteLine("- For the first building, you can build anywhere in the city.");
                         Console.WriteLine("There are five types of buidings:");
                         Console.WriteLine("- Residential (R): Each residential building generates 1 coin per turn. Each cluster of residential buildings (must be immediately next to each other) requires 1 coin per turn to upkeep.");
                         Console.WriteLine("- Industry (I): Each industry generates 2 coins per turn and costs 1 coin per turn to upkeep.");
@@ -143,7 +142,7 @@ namespace NgeeAnnCity
                     else if (isSecondTurn)
                     {
                         Console.WriteLine(" ");
-                        Console.WriteLine("<<< For subsequent constructions, you can only build on squares connected to existing buildings >>>");
+                        Console.WriteLine("- For subsequent constructions, you can only build on squares connected to existing buildings");
                         Console.WriteLine(" ");
                         Console.WriteLine($"Options: 1. {options[0]} 2. {options[1]}");
                         Console.WriteLine("3. Select a cell with a building to demolish it (1 coin cost).");
@@ -153,8 +152,6 @@ namespace NgeeAnnCity
                     }
                     else
                     {
-                        Console.WriteLine(" ");
-                        Console.WriteLine($"Options: 1. {options[0]} 2. {options[1]}");
                         Console.WriteLine(" ");
                         Console.WriteLine($"Options: 1. {options[0]} 2. {options[1]}");
                         Console.WriteLine("3. Select a cell with a building to demolish it (1 coin cost).");
@@ -349,7 +346,6 @@ namespace NgeeAnnCity
 
                     if (isFirstTurn)
                     {
-                        Console.WriteLine("");
                         Console.WriteLine("");
                         Console.WriteLine("- In Free Play mode, you have unlimited coins.");
                         Console.WriteLine("- Start with a 5x5 grid and expand the grid by 5 rows/columns when a building is constructed on the border.");
