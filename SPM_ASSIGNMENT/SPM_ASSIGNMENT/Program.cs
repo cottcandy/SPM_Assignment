@@ -28,6 +28,7 @@ namespace NgeeAnnCity
         private static int turnNumber = 1;
         private static string playerName;
         private static int gridSize;
+        private static bool[,] placements;
 
 
         public static void Main(string[] args)
@@ -347,14 +348,15 @@ namespace NgeeAnnCity
                     if (isFirstTurn)
                     {
                         Console.WriteLine("");
-                        Console.WriteLine("- In Free Play mode, you have unlimited coins.");
-                        Console.WriteLine("- Start with a 5x5 grid and expand the grid by 5 rows/columns when a building is constructed on the border.");
-                        Console.WriteLine("- There are five types of buildings:");
-                        Console.WriteLine("- Residential (R): Each residential building generates 1 coin per turn. Each cluster of residential buildings (must be immediately next to each other) requires 1 coin per turn to upkeep.");
-                        Console.WriteLine("- Industry (I): Each industry generates 2 coins per turn and costs 1 coin per turn to upkeep.");
-                        Console.WriteLine("- Commercial (C): Each commercial generates 3 coins per turn and costs 2 coins per turn to upkeep.");
-                        Console.WriteLine("- Park (O): Each park costs 1 coin to upkeep.");
-                        Console.WriteLine("- Road (*): Each unconnected road segment costs 1 coin to upkeep.");
+                        Console.WriteLine("~Instructions~ ");
+                        Console.WriteLine("- The objective of this game is to build a city that scores as many points as possible.");
+                        Console.WriteLine("- For the first building, you can build anywhere in the city.");
+                        Console.WriteLine("There are five types of buidings:");
+                        Console.WriteLine("- Residential (R): If it is next to an industry (I), then it scores 1 point only. Otherwise, it scores 1 point for each adjacent residential (R) or commercial (C), and 2 points for each adjacent park (O). Each residential building generates 1 coin per turn. Each cluster of residential buildings (must be immediately next to each other) requires 1 coin per turn to upkeep.");
+                        Console.WriteLine("- Industry (I): Scores 1 point per industry in the city. Each industry generates 1 coin per residential building adjacent to it. Each industry generates 2 coins per turn and costs 1 coin per turn to upkeep.");
+                        Console.WriteLine("- Commercial (C): Scores 1 point per commercial adjacent to it. Each commercial generates 1 coin per residential adjacent to it. Each commercial generates 3 coins per turn and costs 2 coins per turn to upkeep.");
+                        Console.WriteLine("- Park (O): Scores 1 point per park adjacent to it. Each park costs 1 coin to upkeep.");
+                        Console.WriteLine("- Road (*): Scores 1 point per connected road (*) in the same row. Each unconnected road segment costs 1 coin to upkeep.");
                     }
 
                     Console.WriteLine("");
@@ -615,10 +617,10 @@ namespace NgeeAnnCity
         private static (int x, int y) GetBuildLocation(bool isFirstTurn)
         {
            
-                Console.Write("Enter Y (1-20): ");
+                Console.Write("Enter X (1-20): ");
                 int x = int.Parse(Console.ReadLine());
 
-                Console.Write("Enter X (1-20): ");
+                Console.Write("Enter Y (1-20): ");
                 int y = int.Parse(Console.ReadLine());
                 Console.WriteLine("");
 
@@ -643,7 +645,7 @@ namespace NgeeAnnCity
             int[] dx = { -1, 1, 0, 0 };
             int[] dy = { 0, 0, -1, 1 };
 
-            Console.WriteLine($"Checking adjacency for ({y+1}, {x+1})");
+            Console.WriteLine($"Checking adjacency for ({x}, {y})");
 
             for (int i = 0; i < 4; i++)
             {
@@ -652,9 +654,9 @@ namespace NgeeAnnCity
 
                 if (nx >= 0 && nx < gridSize && ny >= 0 && ny < gridSize)
                 {
-                    if (grid[ny, nx] != null)
+                    if (grid[nx, ny] != null)
                     {
-                        Console.WriteLine($"Adjacent building found at ({ny+1}, {nx+1})");
+                        Console.WriteLine($"Adjacent building found at ({nx}, {ny})");
                         return true;
                     }
                 }
@@ -715,8 +717,8 @@ namespace NgeeAnnCity
 
         private static void PlaceBuilding(BuildingType type, int x, int y)
         {
-            Building building = new Building(type, y, x);
-            grid[y, x] = building;
+            Building building = new Building(type, x, y);
+            grid[x, y] = building;
             buildings.Add(building);
         }
 
