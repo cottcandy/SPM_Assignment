@@ -73,3 +73,18 @@ C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment
 C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM4\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.pdb
 C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM4\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.genruntimeconfig.cache
 C:\Users\yulin\OneDrive - Ngee Ann Polytechnic\NP\semester 3 2024\SPM\Assignment 1\SPM\SPM4\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\ref\SPM_ASSIGNMENT.dll
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.exe
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.deps.json
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.runtimeconfig.json
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.dll
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\bin\Debug\net6.0\SPM_ASSIGNMENT.pdb
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.AssemblyInfoInputs.cache
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.AssemblyInfo.cs
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.csproj.CoreCompileInputs.cache
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.sourcelink.json
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.dll
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\refint\SPM_ASSIGNMENT.dll
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.pdb
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\SPM_ASSIGNMENT.genruntimeconfig.cache
+C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\obj\Debug\net6.0\ref\SPM_ASSIGNMENT.dll
