@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj": {}
   },
   "projects": {
@@ -15,6 +16,41 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nandi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+<<<<<<< HEAD
+    "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+        "projectName": "SPM_ASSIGNMENT",
+        "projectPath": "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\",
+=======
+    "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+        "projectName": "SPM_ASSIGNMENT",
+        "projectPath": "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+        "packagesPath": "C:\\Users\\Klaris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\",
+>>>>>>> ce76bb96ea5e3e5b97dc335985ad5469791033c6
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+<<<<<<< HEAD
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+=======
+          "C:\\Users\\Klaris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> ce76bb96ea5e3e5b97dc335985ad5469791033c6
+>>>>>>> 233ee64bd952e179ac119eec6e3f6f147ec1b7ba
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +58,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,6 +71,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -55,7 +97,11 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+>>>>>>> ce76bb96ea5e3e5b97dc335985ad5469791033c6
         }
       }
     }
