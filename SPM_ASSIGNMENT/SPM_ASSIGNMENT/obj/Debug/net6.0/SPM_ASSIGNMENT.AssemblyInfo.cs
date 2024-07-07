@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SPM_ASSIGNMENT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0189ac45e26b0c515998f594e3ea1d946b35ff6a")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b99680b0c1b17aaa0bd52e885590ca94b56fa3b")]
+>>>>>>> 5bb0d8b5ea7d6e07ef4ec0a95ee03ae9dc5eb27b
 [assembly: System.Reflection.AssemblyProductAttribute("SPM_ASSIGNMENT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SPM_ASSIGNMENT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -30,6 +30,7 @@ namespace NgeeAnnCity
         private static int gridSize;
 
 
+
         public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to City Builder Game!");
@@ -165,6 +166,8 @@ namespace NgeeAnnCity
                         if (choice == 3 && isFirstTurn)
                         {
                             Console.WriteLine("You cannot demolish a building on the first turn.");
+                            Console.Write("Press any key to continue");
+                            Console.Read();
                             continue;
                         }
 
@@ -184,7 +187,7 @@ namespace NgeeAnnCity
                                     {
                                         PlaceBuilding(selectedBuilding, x - 1, y - 1);
                                         coins--;
-                                        UpdateCoins(selectedBuilding, x - 1, y - 1);
+                                        UpdateCoins();
                                         validInput = true;
                                         if (isFirstTurn)
                                         {
@@ -209,6 +212,8 @@ namespace NgeeAnnCity
                                             break;
                                         else if (input == "00")
                                             continue;
+                                        else
+                                            Console.WriteLine("Invalid input, try again.");
                                     }
                                 }
                                 break;
@@ -347,14 +352,15 @@ namespace NgeeAnnCity
                     if (isFirstTurn)
                     {
                         Console.WriteLine("");
-                        Console.WriteLine("- In Free Play mode, you have unlimited coins.");
-                        Console.WriteLine("- Start with a 5x5 grid and expand the grid by 5 rows/columns when a building is constructed on the border.");
-                        Console.WriteLine("- There are five types of buildings:");
-                        Console.WriteLine("- Residential (R): Each residential building generates 1 coin per turn. Each cluster of residential buildings (must be immediately next to each other) requires 1 coin per turn to upkeep.");
-                        Console.WriteLine("- Industry (I): Each industry generates 2 coins per turn and costs 1 coin per turn to upkeep.");
-                        Console.WriteLine("- Commercial (C): Each commercial generates 3 coins per turn and costs 2 coins per turn to upkeep.");
-                        Console.WriteLine("- Park (O): Each park costs 1 coin to upkeep.");
-                        Console.WriteLine("- Road (*): Each unconnected road segment costs 1 coin to upkeep.");
+                        Console.WriteLine("~Instructions~ ");
+                        Console.WriteLine("- The objective of this game is to build a city that scores as many points as possible.");
+                        Console.WriteLine("- For the first building, you can build anywhere in the city.");
+                        Console.WriteLine("There are five types of buidings:");
+                        Console.WriteLine("- Residential (R): If it is next to an industry (I), then it scores 1 point only. Otherwise, it scores 1 point for each adjacent residential (R) or commercial (C), and 2 points for each adjacent park (O). Each residential building generates 1 coin per turn. Each cluster of residential buildings (must be immediately next to each other) requires 1 coin per turn to upkeep.");
+                        Console.WriteLine("- Industry (I): Scores 1 point per industry in the city. Each industry generates 1 coin per residential building adjacent to it. Each industry generates 2 coins per turn and costs 1 coin per turn to upkeep.");
+                        Console.WriteLine("- Commercial (C): Scores 1 point per commercial adjacent to it. Each commercial generates 1 coin per residential adjacent to it. Each commercial generates 3 coins per turn and costs 2 coins per turn to upkeep.");
+                        Console.WriteLine("- Park (O): Scores 1 point per park adjacent to it. Each park costs 1 coin to upkeep.");
+                        Console.WriteLine("- Road (*): Scores 1 point per connected road (*) in the same row. Each unconnected road segment costs 1 coin to upkeep.");
                     }
 
                     Console.WriteLine("");
@@ -381,7 +387,7 @@ namespace NgeeAnnCity
                             if (IsValidLocationFreePlay(x - 1, y - 1))
                             {
                                 PlaceBuilding(selectedBuilding, x - 1, y - 1);
-                                UpdateCoins(selectedBuilding, x - 1, y - 1);
+                                UpdateCoins();
                                 validInput = true;
                                 isFirstTurn = false;
                                 turnNumber++;
@@ -426,6 +432,9 @@ namespace NgeeAnnCity
                             else
                             {
                                 Console.WriteLine("You cannot demolish a building on the first turn.");
+                                Console.Write("Press any key to continue");
+                                Console.Read();
+                                continue;
                             }
                             break;
                         case "7":
@@ -614,15 +623,38 @@ namespace NgeeAnnCity
 
         private static (int x, int y) GetBuildLocation(bool isFirstTurn)
         {
-           
-                Console.Write("Enter Y (1-20): ");
-                int x = int.Parse(Console.ReadLine());
+            int x, y;
 
+            while (true)
+            {
                 Console.Write("Enter X (1-20): ");
-                int y = int.Parse(Console.ReadLine());
-                Console.WriteLine("");
+                if (int.TryParse(Console.ReadLine(), out x) && x >= 1 && x <= 20)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter an integer between 1 and 20.");
+                }
+            }
 
-                return (y, x);
+            while (true)
+            {
+                Console.Write("Enter Y (1-20): ");
+                if (int.TryParse(Console.ReadLine(), out y) && y >= 1 && y <= 20)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter an integer between 1 and 20.");
+                }
+            }
+
+            Console.WriteLine("");
+
+            return (y, x);
+
         }
             
 
@@ -643,7 +675,7 @@ namespace NgeeAnnCity
             int[] dx = { -1, 1, 0, 0 };
             int[] dy = { 0, 0, -1, 1 };
 
-            Console.WriteLine($"Checking adjacency for ({y+1}, {x+1})");
+            Console.WriteLine($"Checking adjacency for ({x}, {y})");
 
             for (int i = 0; i < 4; i++)
             {
@@ -652,9 +684,9 @@ namespace NgeeAnnCity
 
                 if (nx >= 0 && nx < gridSize && ny >= 0 && ny < gridSize)
                 {
-                    if (grid[ny, nx] != null)
+                    if (grid[nx, ny] != null)
                     {
-                        Console.WriteLine($"Adjacent building found at ({ny+1}, {nx+1})");
+                        Console.WriteLine($"Adjacent building found at ({nx}, {ny})");
                         return true;
                     }
                 }
@@ -715,8 +747,8 @@ namespace NgeeAnnCity
 
         private static void PlaceBuilding(BuildingType type, int x, int y)
         {
-            Building building = new Building(type, y, x);
-            grid[y, x] = building;
+            Building building = new Building(type, x, y);
+            grid[x, y] = building;
             buildings.Add(building);
         }
 
@@ -727,35 +759,281 @@ namespace NgeeAnnCity
             grid[x, y] = null;
         }
 
-        private static void UpdateCoins(BuildingType type, int x, int y)
+       private static int CalculateScore()
         {
-            switch (type)
-            {
-                case BuildingType.Residential:
-                    coins += 1;
-                    break;
-                case BuildingType.Industry:
-                    coins += 2;
-                    break;
-                case BuildingType.Commercial:
-                    coins += 3;
-                    break;
-                case BuildingType.Park:
-                    coins -= 1;
-                    break;
-                case BuildingType.Road:
-                    coins -= 1;
-                    break;
-            }
-        }
+            int score = 0;
 
-        private static int CalculateScore()
-        {
-            // Simple scoring mechanism
-            int score = buildings.Count * 10;
+            for (int i = 0; i < gridSize; i++)
+            {
+                for (int j = 0; j < gridSize; j++)
+                {
+                    if (grid[i, j] != null)
+                    {
+                        switch (grid[i, j].Type)
+                        {
+                            case BuildingType.Residential:
+                                score += CalculateResidentialScore(i, j);
+                                break;
+                            case BuildingType.Industry:
+                                score += CalculateIndustryScore();
+                                break;
+                            case BuildingType.Commercial:
+                                score += CalculateCommercialScore(i, j);
+                                break;
+                            case BuildingType.Park:
+                                score += CalculateParkScore(i, j);
+                                break;
+                            case BuildingType.Road:
+                                score += CalculateRoadScore(i, j);
+                                break;
+                        }
+                    }
+                }
+            }
+
             return score;
         }
-    }
+
+
+        private static int CalculateResidentialScore(int x, int y)
+        {
+            int score = 0;
+            bool adjacentToIndustry = false;
+
+            // Check adjacent cells for residential (R), commercial (C), park (O), and industry (I)
+            int[][] directions = new int[][]
+            {
+                new int[] { 0, 1 },
+                new int[] { 1, 0 },
+                new int[] { 0, -1 },
+                new int[] { -1, 0 }
+            };
+
+            foreach (var dir in directions)
+            {
+                int nx = x + dir[0];
+                int ny = y + dir[1];
+
+                if (nx >= 0 && nx < gridSize && ny >= 0 && ny < gridSize && grid[nx, ny] != null)
+                {
+                    switch (grid[nx, ny].Type)
+                    {
+                        case BuildingType.Residential:
+                        case BuildingType.Commercial:
+                            score += 1;
+                            break;
+                        case BuildingType.Park:
+                            score += 2;
+                            break;
+                        case BuildingType.Industry:
+                            adjacentToIndustry = true;
+                            break;
+                    }
+                }
+            }
+
+            return adjacentToIndustry ? 1 : score;
+        }
+
+        private static int CalculateIndustryScore()
+        {
+            int score = 0;
+
+            for (int i = 0; i < gridSize; i++)
+            {
+                for (int j = 0; j < gridSize; j++)
+                {
+                    if (grid[i, j] != null && grid[i, j].Type == BuildingType.Industry)
+                    {
+                        score += 1; // Each industry scores 1 point per industry in the city
+                    }
+                }
+            }
+
+            return score;
+        }
+
+        private static int CalculateCommercialScore(int x, int y)
+        {
+            int score = 0;
+
+            // Check adjacent cells for commercial (C)
+            int[][] directions = new int[][]
+            {
+                new int[] { 0, 1 },
+                new int[] { 1, 0 },
+                new int[] { 0, -1 },
+                new int[] { -1, 0 }
+            };
+
+            foreach (var dir in directions)
+            {
+                int nx = x + dir[0];
+                int ny = y + dir[1];
+
+                if (nx >= 0 && nx < gridSize && ny >= 0 && ny < gridSize && grid[nx, ny] != null && grid[nx, ny].Type == BuildingType.Commercial)
+                {
+                    score += 1;
+                }
+            }
+
+            return score;
+        }
+
+        private static int CalculateParkScore(int x, int y)
+        {
+            int score = 0;
+
+            // Check adjacent cells for parks (O)
+            int[][] directions = new int[][]
+            {
+                new int[] { 0, 1 },
+                new int[] { 1, 0 },
+                new int[] { 0, -1 },
+                new int[] { -1, 0 }
+            };
+
+            foreach (var dir in directions)
+            {
+                int nx = x + dir[0];
+                int ny = y + dir[1];
+
+                if (nx >= 0 && nx < gridSize && ny >= 0 && ny < gridSize && grid[nx, ny] != null && grid[nx, ny].Type == BuildingType.Park)
+                {
+                    score += 1;
+                }
+            }
+
+            return score;
+        }
+
+        private static int CalculateRoadScore(int x, int y)
+        {
+            int score = 0;
+
+            // Check connected roads (*) in the same row
+            for (int j = 0; j < gridSize; j++)
+            {
+                if (grid[x, j] != null && grid[x, j].Type == BuildingType.Road)
+                {
+                    score += 1;
+                }
+            }
+
+            return score;
+        }
+
+        private static int UpdateCoins()
+        {
+            int coins = 0;
+
+            for (int i = 0; i < gridSize; i++)
+            {
+                for (int j = 0; j < gridSize; j++)
+                {
+                    if (grid[i, j] != null)
+                    {
+                        switch (grid[i, j].Type)
+                        {
+                            case BuildingType.Residential:
+                                coins += 1; // Each residential building generates 1 coin per turn
+                                break;
+                            case BuildingType.Industry:
+                                coins += 2; // Each industry generates 2 coins per turn
+                                break;
+                            case BuildingType.Commercial:
+                                coins += 3; // Each commercial generates 3 coins per turn
+                                break;
+                        }
+                    }
+                }
+            }
+        
+            // Deduct upkeep costs
+            for (int i = 0; i < gridSize; i++)
+            {
+                for (int j = 0; j < gridSize; j++)
+                {
+                    if (grid[i, j] != null)
+                    {
+                        switch (grid[i, j].Type)
+                        {
+                            case BuildingType.Residential:
+                                coins -= CalculateResidentialUpkeep(i, j);
+                                break;
+                            case BuildingType.Industry:
+                                coins -= 1; // Each industry costs 1 coin per turn to upkeep
+                                break;
+                            case BuildingType.Commercial:
+                                coins -= 2; // Each commercial costs 2 coins per turn to upkeep
+                                break;
+                            case BuildingType.Park:
+                                coins -= 1; // Each park costs 1 coin to upkeep
+                                break;
+                            case BuildingType.Road:
+                                if (!IsConnectedRoad(i, j))
+                                {
+                                    coins -= 1; // Each unconnected road segment costs 1 coin to upkeep
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+
+            return coins;
+        }
+
+        private static int CalculateResidentialUpkeep(int x, int y)
+        {
+            int upkeep = 1;
+            int[][] directions = new int[][]
+            {
+                new int[] { 0, 1 },
+                new int[] { 1, 0 },
+                new int[] { 0, -1 },
+                new int[] { -1, 0 }
+            };
+
+            foreach (var dir in directions)
+            {
+                int nx = x + dir[0];
+                int ny = y + dir[1];
+
+                if (nx >= 0 && nx < gridSize && ny >= 0 && ny < gridSize && grid[nx, ny] != null && grid[nx, ny].Type == BuildingType.Residential)
+                {
+                    upkeep = 1; // Each cluster of residential buildings requires 1 coin per turn to upkeep
+                }
+            }
+
+            return upkeep;
+        }
+
+        private static bool IsConnectedRoad(int x, int y)
+        {
+            // Check if the road segment is connected to another road in the same row or column
+            int[][] directions = new int[][]
+            {
+                new int[] { 0, 1 },
+                new int[] { 1, 0 },
+                new int[] { 0, -1 },
+                new int[] { -1, 0 }
+            };
+
+            foreach (var dir in directions)
+            {
+                int nx = x + dir[0];
+                int ny = y + dir[1];
+
+                if (nx >= 0 && nx < gridSize && ny >= 0 && ny < gridSize && grid[nx, ny] != null && grid[nx, ny].Type == BuildingType.Road)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
 
     public class Building
     {
@@ -770,4 +1048,4 @@ namespace NgeeAnnCity
             Y = y;
         }
     }
-}
+}}
