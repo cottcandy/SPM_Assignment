@@ -8,10 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SPM_ASSIGNMENT
-<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\User\Documents\NP\NP 2.1\SPM\code\rahhhhhh\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\
-=======
-build_property.ProjectDir = C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\
->>>>>>> ce76bb96ea5e3e5b97dc335985ad5469791033c6
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
