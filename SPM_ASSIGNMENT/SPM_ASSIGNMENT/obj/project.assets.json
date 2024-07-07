@@ -8,19 +8,40 @@
     "net6.0": []
   },
   "packageFolders": {
+<<<<<<< HEAD
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+=======
     "C:\\Users\\Klaris\\.nuget\\packages\\": {}
+>>>>>>> 5bb0d8b5ea7d6e07ef4ec0a95ee03ae9dc5eb27b
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+      "projectName": "SPM_ASSIGNMENT",
+      "projectPath": "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\",
+=======
       "projectUniqueName": "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
       "projectName": "SPM_ASSIGNMENT",
       "projectPath": "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
       "packagesPath": "C:\\Users\\Klaris\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\",
+>>>>>>> 5bb0d8b5ea7d6e07ef4ec0a95ee03ae9dc5eb27b
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
+<<<<<<< HEAD
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+=======
         "C:\\Users\\Klaris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 5bb0d8b5ea7d6e07ef4ec0a95ee03ae9dc5eb27b
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,7 +49,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -41,11 +61,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -67,7 +82,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+=======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+>>>>>>> 5bb0d8b5ea7d6e07ef4ec0a95ee03ae9dc5eb27b
       }
     }
   },
@@ -76,7 +95,11 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
+      "message": "Problem reading the cache file C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+=======
       "message": "Problem reading the cache file C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+>>>>>>> 5bb0d8b5ea7d6e07ef4ec0a95ee03ae9dc5eb27b
     }
   ]
 }
