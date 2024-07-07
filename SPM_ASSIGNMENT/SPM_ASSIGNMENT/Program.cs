@@ -28,12 +28,13 @@ namespace NgeeAnnCity
         private static int turnNumber = 1;
         private static string playerName;
         private static int gridSize;
+      
 
 
 
         public static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to City Builder Game!");
+            Console.WriteLine("Welcome to Ngee Ann City!");
             Console.Write("Enter your name: ");
             playerName = Console.ReadLine().Trim();
             coins = InitialCoins;
@@ -113,6 +114,12 @@ namespace NgeeAnnCity
 
             while (coins > 0)
             {
+                if (IsGridFilled())
+                {
+                    EndArcadeMode("The grid is completely filled!");
+                    return;
+                }
+
                 BuildingType[] options = GetUniqueRandomBuildings();
                 bool validInput = false;
 
@@ -124,10 +131,11 @@ namespace NgeeAnnCity
                     if (isFirstTurn)
                     {
                         Console.WriteLine(" ");
-                        Console.WriteLine("~Instructions~ ");
+                        Console.WriteLine("~Instructions (1/2)~");
+                        Console.WriteLine("- You are the mayor of this city.");
                         Console.WriteLine("- The objective of this game is to build a city that scores as many points as possible.");
                         Console.WriteLine("- For the first building, you can build anywhere in the city.");
-                        Console.WriteLine("There are five types of buidings:");
+                        Console.WriteLine("There are five types of buildings:");
                         Console.WriteLine("- Residential (R): If it is next to an industry (I), then it scores 1 point only. Otherwise, it scores 1 point for each adjacent residential (R) or commercial (C), and 2 points for each adjacent park (O). Each residential building generates 1 coin per turn. Each cluster of residential buildings (must be immediately next to each other) requires 1 coin per turn to upkeep.");
                         Console.WriteLine("- Industry (I): Scores 1 point per industry in the city. Each industry generates 1 coin per residential building adjacent to it. Each industry generates 2 coins per turn and costs 1 coin per turn to upkeep.");
                         Console.WriteLine("- Commercial (C): Scores 1 point per commercial adjacent to it. Each commercial generates 1 coin per residential adjacent to it. Each commercial generates 3 coins per turn and costs 2 coins per turn to upkeep.");
@@ -143,7 +151,9 @@ namespace NgeeAnnCity
                     else if (isSecondTurn)
                     {
                         Console.WriteLine(" ");
+                        Console.WriteLine("~Instructions (2/2)~");
                         Console.WriteLine("- For subsequent constructions, you can only build on squares connected to existing buildings");
+                        Console.WriteLine("- The game ends either when the city is filled, or when you run out of coins.");
                         Console.WriteLine(" ");
                         Console.WriteLine($"Options: 1. {options[0]} 2. {options[1]}");
                         Console.WriteLine("3. Select a cell with a building to demolish it (1 coin cost).");
@@ -186,7 +196,7 @@ namespace NgeeAnnCity
                                     if (IsValidLocation(x - 1, y - 1, isFirstTurn))
                                     {
                                         PlaceBuilding(selectedBuilding, x - 1, y - 1);
-                                        coins--;
+                                        coins--; //Each construction cost 1 coin.
                                         UpdateCoins();
                                         validInput = true;
                                         if (isFirstTurn)
@@ -204,16 +214,20 @@ namespace NgeeAnnCity
 
                                     else
                                     {
-                                        Console.WriteLine("The location must be adjacent to an existing building.");
-                                        Console.WriteLine("Press 0 to go back to the main menu or press 00 to continue playing.");
+                                        Console.WriteLine("Invalid choice. Press 0 to go back to the main menu or press any key to continue playing.");
                                         string input = Console.ReadLine().Trim();
 
                                         if (input == "0")
+                                        {
+                                            validInput = false;
                                             break;
-                                        else if (input == "00")
+                                        }
+                                        else 
+                                        {
+                                            
                                             continue;
-                                        else
-                                            Console.WriteLine("Invalid input, try again.");
+                                        }
+                                        
                                     }
                                 }
                                 break;
@@ -257,9 +271,34 @@ namespace NgeeAnnCity
                 }
             }
 
-            Console.WriteLine("Game Over! Final Score: " + CalculateScore());
+            EndArcadeMode("You have run out of coins!");
         }
 
+        private static bool IsGridFilled()
+        {
+            for (int i = 0; i < gridSize; i++)
+            {
+                for (int j = 0; j < gridSize; j++)
+                {
+                    if (grid[i, j] == null)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private static void EndArcadeMode(string message)
+        {
+            Console.WriteLine(message);
+            Console.WriteLine("Game Over!");
+            Console.WriteLine($"Final Score: {CalculateScore()}");
+            Console.WriteLine($"Total Turns: {turnNumber}");
+            Console.WriteLine("Press any key to return to the Main Menu...");
+            Console.ReadLine();
+            DisplayMainMenu();
+        }
         private static void DisplayArcadeGrid()
         {
             // Print the column labels
@@ -666,8 +705,10 @@ namespace NgeeAnnCity
             }
             else
             {
-                return grid[x, y] == null && HasAdjacentBuilding(x, y);
+                Console.WriteLine("There is already a building at the selected location.");
+                return false;
             }
+
         }
 
         private static bool HasAdjacentBuilding(int x, int y)
@@ -675,7 +716,7 @@ namespace NgeeAnnCity
             int[] dx = { -1, 1, 0, 0 };
             int[] dy = { 0, 0, -1, 1 };
 
-            Console.WriteLine($"Checking adjacency for ({x}, {y})");
+            Console.WriteLine($"Checking adjacency for ({y+1}, {x+1})");
 
             for (int i = 0; i < 4; i++)
             {
@@ -751,6 +792,7 @@ namespace NgeeAnnCity
             grid[x, y] = building;
             buildings.Add(building);
         }
+
 
         private static void RemoveBuilding(int x, int y)
         {
@@ -925,8 +967,10 @@ namespace NgeeAnnCity
 
         private static int UpdateCoins()
         {
-            int coins = 0;
+            int totalCoinsEarned = 0;
+            int upkeepCost = 0;
 
+            // Generate coins based on building types
             for (int i = 0; i < gridSize; i++)
             {
                 for (int j = 0; j < gridSize; j++)
@@ -936,19 +980,24 @@ namespace NgeeAnnCity
                         switch (grid[i, j].Type)
                         {
                             case BuildingType.Residential:
-                                coins += 1; // Each residential building generates 1 coin per turn
+                                totalCoinsEarned += 1; // Each residential building generates 1 coin per turn
+                                Console.WriteLine("Residential +1 coin");
                                 break;
                             case BuildingType.Industry:
-                                coins += 2; // Each industry generates 2 coins per turn
+                                totalCoinsEarned += 2; // Each industry generates 2 coins per turn
+                                Console.WriteLine("Industry +2 coins");
                                 break;
                             case BuildingType.Commercial:
-                                coins += 3; // Each commercial generates 3 coins per turn
+                                totalCoinsEarned += 3; // Each commercial generates 3 coins per turn
+                                Console.WriteLine("Commercial +3 coins");
                                 break;
                         }
                     }
                 }
             }
-        
+
+            coins += totalCoinsEarned;
+
             // Deduct upkeep costs
             for (int i = 0; i < gridSize; i++)
             {
@@ -959,21 +1008,26 @@ namespace NgeeAnnCity
                         switch (grid[i, j].Type)
                         {
                             case BuildingType.Residential:
-                                coins -= CalculateResidentialUpkeep(i, j);
+                                upkeepCost += CalculateResidentialUpkeep(i, j);
+                                Console.WriteLine("Residential upkeep -1 coin per cluster");
                                 break;
                             case BuildingType.Industry:
-                                coins -= 1; // Each industry costs 1 coin per turn to upkeep
+                                upkeepCost += 1; // Each industry costs 1 coin per turn to upkeep
+                                Console.WriteLine("Industry -1 coin for upkeep");
                                 break;
                             case BuildingType.Commercial:
-                                coins -= 2; // Each commercial costs 2 coins per turn to upkeep
+                                upkeepCost += 2; // Each commercial costs 2 coins per turn to upkeep
+                                Console.WriteLine("Commercial -2 coins for upkeep");
                                 break;
                             case BuildingType.Park:
-                                coins -= 1; // Each park costs 1 coin to upkeep
+                                upkeepCost += 1; // Each park costs 1 coin to upkeep
+                                Console.WriteLine("Park -1 coin for upkeep");
                                 break;
                             case BuildingType.Road:
                                 if (!IsConnectedRoad(i, j))
                                 {
-                                    coins -= 1; // Each unconnected road segment costs 1 coin to upkeep
+                                    upkeepCost += 1; // Each unconnected road segment costs 1 coin to upkeep
+                                    Console.WriteLine("Unconnected road -1 coin for upkeep");
                                 }
                                 break;
                         }
@@ -981,9 +1035,10 @@ namespace NgeeAnnCity
                 }
             }
 
+            coins -= upkeepCost;
+
             return coins;
         }
-
         private static int CalculateResidentialUpkeep(int x, int y)
         {
             int upkeep = 1;
