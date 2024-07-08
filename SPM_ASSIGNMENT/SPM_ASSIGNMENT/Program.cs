@@ -705,8 +705,7 @@ namespace NgeeAnnCity
             }
             else
             {
-                Console.WriteLine("There is already a building at the selected location.");
-                return false;
+                return grid[x, y] == null && HasAdjacentBuilding(x, y);
             }
 
         }
