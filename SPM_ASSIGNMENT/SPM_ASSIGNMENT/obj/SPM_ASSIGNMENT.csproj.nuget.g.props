@@ -6,22 +6,20 @@
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
 <<<<<<< HEAD
-=======
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 30bf0f3d4513163234ed80908eb4f7f55a345184
     <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\nandi\.nuget\packages\</NuGetPackageFolders>
-=======
-<<<<<<< HEAD
->>>>>>> d4977991206e02a68b47e4681a868c553a6defb4
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\User\.nuget\packages\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
->>>>>>> 233ee64bd952e179ac119eec6e3f6f147ec1b7ba
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.7.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-<<<<<<< HEAD
     <SourceRoot Include="C:\Users\nandi\.nuget\packages\" />
+<<<<<<< HEAD
 =======
     <SourceRoot Include="C:\Users\User\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
@@ -41,5 +39,7 @@
 >>>>>>> 233ee64bd952e179ac119eec6e3f6f147ec1b7ba
 >>>>>>> d4977991206e02a68b47e4681a868c553a6defb4
 >>>>>>> 19a1dbde8dc7403260be1bd81250fa4216b1ccec
+=======
+>>>>>>> 30bf0f3d4513163234ed80908eb4f7f55a345184
   </ItemGroup>
 </Project>

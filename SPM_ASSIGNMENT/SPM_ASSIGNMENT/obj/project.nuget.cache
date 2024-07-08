@@ -1,6 +1,7 @@
 {
   "version": 2,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "dgSpecHash": "6enekHfFKnE=",
   "success": true,
   "projectFilePath": "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
@@ -21,12 +22,18 @@
 >>>>>>> b7b7c6acd55681369f7b3a3dd95e61aa2be10cff
 >>>>>>> d4977991206e02a68b47e4681a868c553a6defb4
 >>>>>>> 19a1dbde8dc7403260be1bd81250fa4216b1ccec
+=======
+  "dgSpecHash": "WxscExxIVQanSSQgc3+DnaKoNSU9Gfz1A+kGYktaYuKVfLswvKK+GbwGiKRSjQqkXtKcKdJOCXZfIhxy5wZQeA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+>>>>>>> 30bf0f3d4513163234ed80908eb4f7f55a345184
   "expectedPackageFiles": [],
   "logs": [
     {
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
 <<<<<<< HEAD
       "message": "Problem reading the cache file C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
 =======
@@ -40,6 +47,9 @@
 >>>>>>> b7b7c6acd55681369f7b3a3dd95e61aa2be10cff
 >>>>>>> d4977991206e02a68b47e4681a868c553a6defb4
 >>>>>>> 19a1dbde8dc7403260be1bd81250fa4216b1ccec
+=======
+      "message": "Problem reading the cache file C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+>>>>>>> 30bf0f3d4513163234ed80908eb4f7f55a345184
     }
   ]
 }

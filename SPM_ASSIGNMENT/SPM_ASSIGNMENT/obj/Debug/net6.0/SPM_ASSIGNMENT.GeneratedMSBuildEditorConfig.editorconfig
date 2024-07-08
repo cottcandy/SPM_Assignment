@@ -9,6 +9,7 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SPM_ASSIGNMENT
 <<<<<<< HEAD
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\Klaris\Documents\NP\Year 2\Sem 1\SPM\assignment\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\
 =======
 <<<<<<< HEAD
@@ -19,3 +20,6 @@ build_property.EnableGeneratedComInterfaceComImportInterop =
 =======
 build_property.ProjectDir = c:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\
 >>>>>>> d4977991206e02a68b47e4681a868c553a6defb4
+=======
+build_property.ProjectDir = C:\Users\nandi\OneDrive - Ngee Ann Polytechnic\NP\2.1\software project management\SPM_Assignment\SPM_ASSIGNMENT\SPM_ASSIGNMENT\
+>>>>>>> 30bf0f3d4513163234ed80908eb4f7f55a345184
