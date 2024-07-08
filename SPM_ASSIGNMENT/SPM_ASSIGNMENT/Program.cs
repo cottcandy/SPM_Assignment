@@ -187,7 +187,6 @@ namespace NgeeAnnCity
                             case 2:
                                 BuildingType selectedBuilding = options[choice - 1];
                                 Console.WriteLine("");
-                                Console.WriteLine("");
                                 Console.WriteLine($"You selected: {selectedBuilding}");
 
                                 while (true)
@@ -299,6 +298,7 @@ namespace NgeeAnnCity
             Console.ReadLine();
             DisplayMainMenu();
         }
+
         private static void DisplayArcadeGrid()
         {
             // Print the column labels
@@ -386,20 +386,20 @@ namespace NgeeAnnCity
                 while (!validInput)
                 {
                     DisplayFreePlayGrid();
-                    Console.WriteLine($"Turn: {turnNumber} | Coins: {coins} | Score: {CalculateScore()}");
+                    Console.WriteLine($"Turn: {turnNumber} | Coins: {"UNLIMITED"} | Score: {CalculateScore()}");
 
                     if (isFirstTurn)
                     {
                         Console.WriteLine("");
                         Console.WriteLine("~Instructions~ ");
                         Console.WriteLine("- The objective of this game is to build a city that scores as many points as possible.");
-                        Console.WriteLine("- For the first building, you can build anywhere in the city.");
+                        Console.WriteLine("- You can construct any of the buildings in the city, on any cell in the city.");
                         Console.WriteLine("There are five types of buidings:");
-                        Console.WriteLine("- Residential (R): If it is next to an industry (I), then it scores 1 point only. Otherwise, it scores 1 point for each adjacent residential (R) or commercial (C), and 2 points for each adjacent park (O). Each residential building generates 1 coin per turn. Each cluster of residential buildings (must be immediately next to each other) requires 1 coin per turn to upkeep.");
-                        Console.WriteLine("- Industry (I): Scores 1 point per industry in the city. Each industry generates 1 coin per residential building adjacent to it. Each industry generates 2 coins per turn and costs 1 coin per turn to upkeep.");
-                        Console.WriteLine("- Commercial (C): Scores 1 point per commercial adjacent to it. Each commercial generates 1 coin per residential adjacent to it. Each commercial generates 3 coins per turn and costs 2 coins per turn to upkeep.");
-                        Console.WriteLine("- Park (O): Scores 1 point per park adjacent to it. Each park costs 1 coin to upkeep.");
-                        Console.WriteLine("- Road (*): Scores 1 point per connected road (*) in the same row. Each unconnected road segment costs 1 coin to upkeep.");
+                        Console.WriteLine("- Residential (R): Each residential building generates 1 coin per turn. Each cluster of residential buildings (must be immediately next to each other) requires 1 coin per turn to upkeep.");
+                        Console.WriteLine("- Industry (I): Each industry generates 2 coins per turn and cost 1 coin per turn to upkeep.");
+                        Console.WriteLine("- Commercial (C): Each commercial generates 3 coins per turn and cost 2 coins per turn to upkeep.");
+                        Console.WriteLine("- Park (O): Each park costs 1 coin to upkeep.");
+                        Console.WriteLine("- Road (*): Each unconnected road segment costs 1 coin to upkeep.");
                     }
 
                     Console.WriteLine("");
