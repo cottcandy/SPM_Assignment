@@ -1,0 +1,32 @@
+09 July 2024   game1
+player name:nani
+coins:11
+turn:3
+score:1
+Park,7,18
+Road,7,19
+
+
+09 July 2024   game2
+player name:nani
+coins:15
+turn:3
+score:1
+Park,7,16
+Industry,7,17
+
+09 July 2024   game3
+player name:nani
+coins:13
+turn:4
+score:2
+Park,7,16
+Industry,7,17
+Road,7,18
+
+09 July 2024   game4
+player name:nani
+coins:14
+turn:2
+score:0
+Park,7,17

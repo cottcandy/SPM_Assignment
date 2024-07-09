@@ -1,0 +1,6 @@
+09 July 2024   game1
+player name:kk
+coins:15
+turn:2
+score:0
+Residential,7,17

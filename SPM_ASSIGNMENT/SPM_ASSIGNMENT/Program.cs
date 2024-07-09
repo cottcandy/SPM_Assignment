@@ -28,7 +28,7 @@ namespace NgeeAnnCity
         private static int turnNumber = 1;
         private static string playerName;
         private static int gridSize;
-      
+        //private static List<HighScore> highScores = new List<HighScore>();
 
 
 
@@ -69,7 +69,7 @@ namespace NgeeAnnCity
                         LoadSavedGame();
                         break;
                     case "4":
-                        // DisplayHighScores();
+                        DisplayAllHighScores();
                         break;
                     case "5":
                         Console.WriteLine("Exiting the game. Goodbye!");
@@ -79,6 +79,11 @@ namespace NgeeAnnCity
                         break;
                 }
             }
+        }
+
+        private static void DisplayAllHighScores()
+        {
+            throw new NotImplementedException();
         }
 
         private static void StartArcadeGame()
@@ -221,12 +226,12 @@ namespace NgeeAnnCity
                                             validInput = false;
                                             break;
                                         }
-                                        else 
+                                        else
                                         {
-                                            
+
                                             continue;
                                         }
-                                        
+
                                     }
                                 }
                                 break;
@@ -599,12 +604,35 @@ namespace NgeeAnnCity
         private static void SaveGame()
         {
             string fileName = $"{playerName}_save.txt";
-            using (StreamWriter writer = new StreamWriter(fileName))
+            string highScoreFileName = "high_scores.txt";
+            int gameNumber = 1;
+
+            if (File.Exists(fileName))
             {
-                writer.WriteLine(playerName);
-                writer.WriteLine(coins);
-                writer.WriteLine(turnNumber);
-                writer.WriteLine(CalculateScore());
+                string[] existingSaves = File.ReadAllLines(fileName);
+                if (existingSaves.Length > 0)
+                {
+                    string lastGame = existingSaves[existingSaves.Length - 5]; // Assuming 5 lines per game entry
+                    if (lastGame.Contains($"player name:{playerName}"))
+                    {
+                        Console.WriteLine("Game already saved for this session.");
+                        return;
+                    }
+                }
+                gameNumber = existingSaves.Count(line => line.Contains($"player name:{playerName}")) + 1;
+            }
+
+            using (StreamWriter writer = new StreamWriter(fileName, true))
+            {
+                if (gameNumber > 1)
+                {
+                    writer.WriteLine();
+                }
+                writer.WriteLine($"{DateTime.Now:dd MMMM yyyy}   game{gameNumber}");
+                writer.WriteLine($"player name:{playerName}");
+                writer.WriteLine($"coins:{coins}");
+                writer.WriteLine($"turn:{turnNumber}");
+                writer.WriteLine($"score:{CalculateScore()}");
 
                 for (int i = 0; i < gridSize; i++)
                 {
@@ -612,42 +640,37 @@ namespace NgeeAnnCity
                     {
                         if (grid[i, j] != null)
                         {
-                            writer.WriteLine($"{i},{j},{grid[i, j].Type}");
+                            writer.WriteLine($"{grid[i, j].Type},{j + 1},{i + 1}");
                         }
                     }
                 }
             }
-
+            UpdateHighScores(playerName, CalculateScore(), highScoreFileName);
             Console.WriteLine("Game saved successfully.");
+
         }
 
         private static void LoadSavedGame()
         {
             Console.Write("Enter the name of the saved game file: ");
-            string fileName = Console.ReadLine().Trim();
+            string fileName = $"{playerName}_save.txt";
 
             if (File.Exists(fileName))
             {
                 using (StreamReader reader = new StreamReader(fileName))
                 {
-                    playerName = reader.ReadLine();
-                    coins = int.Parse(reader.ReadLine());
-                    turnNumber = int.Parse(reader.ReadLine());
-
-                    grid = new Building[gridSize, gridSize];
-                    buildings = new List<Building>();
-
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
+                    while (!reader.EndOfStream)
                     {
-                        string[] parts = line.Split(',');
-                        int x = int.Parse(parts[0]);
-                        int y = int.Parse(parts[1]);
-                        BuildingType type = (BuildingType)Enum.Parse(typeof(BuildingType), parts[2]);
-
-                        Building building = new Building(type, x, y);
-                        grid[x, y] = building;
-                        buildings.Add(building);
+                        string line = reader.ReadLine();
+                        if (line.Contains($"player name:{playerName}"))
+                        {
+                            Console.WriteLine(line);
+                        }
+                        else if (line.StartsWith("score:"))
+                        {
+                            Console.WriteLine(line);
+                            break;
+                        }
                     }
                 }
 
@@ -659,6 +682,61 @@ namespace NgeeAnnCity
                 Console.WriteLine("Saved game file not found.");
             }
         }
+
+        private static void UpdateHighScores(string playerName, int score, string highScoreFileName)
+        {
+            List<string> highScores = new List<string>();
+            if (File.Exists(highScoreFileName))
+            {
+                highScores = File.ReadAllLines(highScoreFileName).ToList();
+            }
+
+            bool updated = false;
+            for (int i = 0; i < highScores.Count; i++)
+            {
+                if (highScores[i].StartsWith($"{playerName}:"))
+                {
+                    int existingScore = int.Parse(highScores[i].Split(':')[1]);
+                    if (score > existingScore)
+                    {
+                        highScores[i] = $"{playerName}:{score}";
+                        updated = true;
+                    }
+                    break;
+                }
+            }
+
+            if (!updated)
+            {
+                highScores.Add($"{playerName}:{score}");
+            }
+            highScores.Sort((a, b) =>
+            {
+                int scoreA = int.Parse(a.Split(':')[1]);
+                int scoreB = int.Parse(b.Split(':')[1]);
+                return scoreB.CompareTo(scoreA);
+            });
+            File.WriteAllLines(highScoreFileName, highScores);
+        }
+
+        private static void DisplayAllHighScores(string highScoreFileName)
+        {
+            if (File.Exists(highScoreFileName))
+            {
+                string[] highScores = File.ReadAllLines(highScoreFileName);
+                Console.WriteLine("High Scores:");
+                foreach (string score in highScores)
+                {
+                    string[] parts = score.Split(':');
+                    Console.WriteLine($"{parts[0]} - {parts[1]}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No high scores found.");
+            }
+        }
+
 
         private static (int x, int y) GetBuildLocation(bool isFirstTurn)
         {
@@ -695,7 +773,7 @@ namespace NgeeAnnCity
             return (y, x);
 
         }
-            
+
 
         private static bool IsValidLocation(int x, int y, bool isFirstTurn)
         {
@@ -705,7 +783,7 @@ namespace NgeeAnnCity
             }
             else
             {
-                return grid[x,y] == null && HasAdjacentBuilding(x,y);
+                return grid[x, y] == null && HasAdjacentBuilding(x, y);
             }
 
         }
@@ -715,7 +793,7 @@ namespace NgeeAnnCity
             int[] dx = { -1, 1, 0, 0 };
             int[] dy = { 0, 0, -1, 1 };
 
-            Console.WriteLine($"Checking adjacency for ({y+1}, {x+1})");
+            Console.WriteLine($"Checking adjacency for ({y + 1}, {x + 1})");
 
             for (int i = 0; i < 4; i++)
             {
@@ -800,7 +878,7 @@ namespace NgeeAnnCity
             grid[x, y] = null;
         }
 
-       private static int CalculateScore()
+        private static int CalculateScore()
         {
             int score = 0;
 
@@ -1062,7 +1140,6 @@ namespace NgeeAnnCity
 
             return upkeep;
         }
-
         private static bool IsConnectedRoad(int x, int y)
         {
             // Check if the road segment is connected to another road in the same row or column
@@ -1087,19 +1164,20 @@ namespace NgeeAnnCity
 
             return false;
         }
-
-
-    public class Building
-    {
-        public BuildingType Type { get; }
-        public int X { get; }
-        public int Y { get; }
-
-        public Building(BuildingType type, int x, int y)
+        public class Building
         {
-            Type = type;
-            X = x;
-            Y = y;
+            public BuildingType Type { get; }
+            public int X { get; }
+            public int Y { get; }
+
+            public Building(BuildingType type, int x, int y)
+            {
+                Type = type;
+                X = x;
+                Y = y;
+            }
         }
     }
-}}
+}
+
+
