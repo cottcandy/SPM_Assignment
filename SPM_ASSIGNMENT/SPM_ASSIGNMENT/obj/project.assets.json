@@ -8,19 +8,80 @@
     "net6.0": []
   },
   "packageFolders": {
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "C:\\Users\\Klaris\\.nuget\\packages\\": {}
+=======
+<<<<<<< HEAD
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+=======
+<<<<<<< HEAD
     "C:\\Users\\nandi\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\yulin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+>>>>>>> b7b7c6acd55681369f7b3a3dd95e61aa2be10cff
+>>>>>>> d4977991206e02a68b47e4681a868c553a6defb4
+>>>>>>> 19a1dbde8dc7403260be1bd81250fa4216b1ccec
+=======
+    "C:\\Users\\nandi\\.nuget\\packages\\": {}
+>>>>>>> 30bf0f3d4513163234ed80908eb4f7f55a345184
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+      "projectName": "SPM_ASSIGNMENT",
+      "projectPath": "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+      "packagesPath": "C:\\Users\\Klaris\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\",
+=======
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+      "projectName": "SPM_ASSIGNMENT",
+      "projectPath": "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\",
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 30bf0f3d4513163234ed80908eb4f7f55a345184
       "projectUniqueName": "C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
       "projectName": "SPM_ASSIGNMENT",
+<<<<<<< HEAD
+      "projectPath": "C:\\Users\\yulin\\OneDrive - Ngee Ann Polytechnic\\NP\\semester 3 2024\\SPM\\Assignment 1\\SPM\\SPM5\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+      "packagesPath": "C:\\Users\\yulin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yulin\\OneDrive - Ngee Ann Polytechnic\\NP\\semester 3 2024\\SPM\\Assignment 1\\SPM\\SPM5\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\",
+>>>>>>> d4977991206e02a68b47e4681a868c553a6defb4
+>>>>>>> 19a1dbde8dc7403260be1bd81250fa4216b1ccec
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+<<<<<<< HEAD
+        "C:\\Users\\Klaris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+<<<<<<< HEAD
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+=======
+<<<<<<< HEAD
+        "C:\\Users\\nandi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\yulin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> b7b7c6acd55681369f7b3a3dd95e61aa2be10cff
+>>>>>>> d4977991206e02a68b47e4681a868c553a6defb4
+>>>>>>> 19a1dbde8dc7403260be1bd81250fa4216b1ccec
+=======
       "projectPath": "C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
       "packagesPath": "C:\\Users\\nandi\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nandi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 30bf0f3d4513163234ed80908eb4f7f55a345184
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,6 +89,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -40,6 +102,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -61,7 +128,19 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
+<<<<<<< HEAD
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+=======
+<<<<<<< HEAD
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+=======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+>>>>>>> d4977991206e02a68b47e4681a868c553a6defb4
+>>>>>>> 19a1dbde8dc7403260be1bd81250fa4216b1ccec
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+>>>>>>> 30bf0f3d4513163234ed80908eb4f7f55a345184
       }
     }
   },
@@ -70,7 +149,23 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+      "message": "Problem reading the cache file C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+=======
+<<<<<<< HEAD
+      "message": "Problem reading the cache file C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+=======
+<<<<<<< HEAD
       "message": "Problem reading the cache file C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+=======
+      "message": "Problem reading the cache file C:\\Users\\yulin\\OneDrive - Ngee Ann Polytechnic\\NP\\semester 3 2024\\SPM\\Assignment 1\\SPM\\SPM5\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+>>>>>>> b7b7c6acd55681369f7b3a3dd95e61aa2be10cff
+>>>>>>> d4977991206e02a68b47e4681a868c553a6defb4
+>>>>>>> 19a1dbde8dc7403260be1bd81250fa4216b1ccec
+=======
+      "message": "Problem reading the cache file C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+>>>>>>> 30bf0f3d4513163234ed80908eb4f7f55a345184
     }
   ]
 }
