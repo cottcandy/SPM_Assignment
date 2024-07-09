@@ -1,35 +1,15 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "sYJy8fvDaEFmfc7kc0eUxfMwb1QvGczfLipkQakyx52rA1CmnPEuMEhUMX8YXG2A8ZRnIZVUWkk7UzcLTrxNIw==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
-=======
-<<<<<<< HEAD
-  "dgSpecHash": "WxscExxIVQanSSQgc3+DnaKoNSU9Gfz1A+kGYktaYuKVfLswvKK+GbwGiKRSjQqkXtKcKdJOCXZfIhxy5wZQeA==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
-=======
-  "dgSpecHash": "n1ZYXB+d5wrfezkVcVvLlwARiL77cBZBFJ4+ORnOj3Kn8Gr9+MU7OuegvqiTXiPy/vq76GkjOkzvumF6DXCUlA==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\yulin\\OneDrive - Ngee Ann Polytechnic\\NP\\semester 3 2024\\SPM\\Assignment 1\\SPM\\SPM5\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
->>>>>>> b7b7c6acd55681369f7b3a3dd95e61aa2be10cff
->>>>>>> d4977991206e02a68b47e4681a868c553a6defb4
   "expectedPackageFiles": [],
   "logs": [
     {
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-<<<<<<< HEAD
       "message": "Problem reading the cache file C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-=======
-<<<<<<< HEAD
-      "message": "Problem reading the cache file C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-=======
-      "message": "Problem reading the cache file C:\\Users\\yulin\\OneDrive - Ngee Ann Polytechnic\\NP\\semester 3 2024\\SPM\\Assignment 1\\SPM\\SPM5\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
->>>>>>> b7b7c6acd55681369f7b3a3dd95e61aa2be10cff
->>>>>>> d4977991206e02a68b47e4681a868c553a6defb4
     }
   ]
 }
