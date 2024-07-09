@@ -1,6 +1,10 @@
 09 July 2024   game1
 player name:kk
-coins:15
-turn:2
-score:0
+coins:11
+turn:6
+score:4
 Residential,7,17
+Road,8,17
+Road,7,18
+Road,7,19
+Industry,7,20

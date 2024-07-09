@@ -607,28 +607,12 @@ namespace NgeeAnnCity
             string highScoreFileName = "high_scores.txt";
             int gameNumber = 1;
 
-            if (File.Exists(fileName))
-            {
-                string[] existingSaves = File.ReadAllLines(fileName);
-                if (existingSaves.Length > 0)
-                {
-                    string lastGame = existingSaves[existingSaves.Length - 5]; // Assuming 5 lines per game entry
-                    if (lastGame.Contains($"player name:{playerName}"))
-                    {
-                        Console.WriteLine("Game already saved for this session.");
-                        return;
-                    }
-                }
-                gameNumber = existingSaves.Count(line => line.Contains($"player name:{playerName}")) + 1;
-            }
-
-            using (StreamWriter writer = new StreamWriter(fileName, true))
+            using (StreamWriter writer = new StreamWriter(fileName))
             {
                 if (gameNumber > 1)
                 {
                     writer.WriteLine();
                 }
-                writer.WriteLine($"{DateTime.Now:dd MMMM yyyy}   game{gameNumber}");
                 writer.WriteLine($"player name:{playerName}");
                 writer.WriteLine($"coins:{coins}");
                 writer.WriteLine($"turn:{turnNumber}");
@@ -647,7 +631,6 @@ namespace NgeeAnnCity
             }
             UpdateHighScores(playerName, CalculateScore(), highScoreFileName);
             Console.WriteLine("Game saved successfully.");
-
         }
 
         private static void LoadSavedGame()

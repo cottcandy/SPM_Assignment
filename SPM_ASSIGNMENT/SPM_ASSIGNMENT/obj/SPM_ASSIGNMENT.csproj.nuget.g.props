@@ -5,41 +5,11 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 30bf0f3d4513163234ed80908eb4f7f55a345184
     <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\nandi\.nuget\packages\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.7.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\nandi\.nuget\packages\" />
-<<<<<<< HEAD
-=======
-    <SourceRoot Include="C:\Users\User\.nuget\packages\" />
-    <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 19a1dbde8dc7403260be1bd81250fa4216b1ccec
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Klaris\.nuget\packages\</NuGetPackageFolders>
-    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.10.0</NuGetToolVersion>
-  </PropertyGroup>
-  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\Klaris\.nuget\packages\" />
-<<<<<<< HEAD
-=======
->>>>>>> ce76bb96ea5e3e5b97dc335985ad5469791033c6
->>>>>>> 233ee64bd952e179ac119eec6e3f6f147ec1b7ba
->>>>>>> d4977991206e02a68b47e4681a868c553a6defb4
->>>>>>> 19a1dbde8dc7403260be1bd81250fa4216b1ccec
-=======
->>>>>>> 30bf0f3d4513163234ed80908eb4f7f55a345184
   </ItemGroup>
 </Project>
