@@ -1,0 +1,8 @@
+09 July 2024   game1
+player name:nani
+coins:18
+turn:4
+score:2
+Commercial,7,17
+Industry,7,18
+Residential,7,19
