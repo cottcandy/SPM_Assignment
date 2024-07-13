@@ -37,15 +37,17 @@ namespace NgeeAnnCity
             Console.WriteLine("Welcome to Ngee Ann City!");
             Console.Write("Enter your name: ");
             playerName = Console.ReadLine().Trim();
+            Console.WriteLine("");
+            Console.WriteLine($"Welcome, {playerName}!");
             coins = InitialCoins;
             DisplayMainMenu();
         }
 
         private static void DisplayMainMenu()
         {
+            string highScoreFileName = "high_scores.txt";
             while (true)
             {
-                Console.WriteLine($"Welcome, {playerName}!");
                 Console.WriteLine("");
                 Console.WriteLine("=== Main Menu ===");
                 Console.WriteLine("1. Start New Arcade Game");
@@ -56,6 +58,7 @@ namespace NgeeAnnCity
 
                 Console.Write("Choose an option (1-5): ");
                 string input = Console.ReadLine();
+                Console.WriteLine("");
 
                 switch (input)
                 {
@@ -69,7 +72,7 @@ namespace NgeeAnnCity
                         LoadSavedGame();
                         break;
                     case "4":
-                        DisplayAllHighScores();
+                        DisplayAllHighScores(highScoreFileName);
                         break;
                     case "5":
                         Console.WriteLine("Exiting the game. Goodbye!");
@@ -81,10 +84,7 @@ namespace NgeeAnnCity
             }
         }
 
-        private static void DisplayAllHighScores()
-        {
-            throw new NotImplementedException();
-        }
+
 
         private static void StartArcadeGame()
         {
@@ -108,7 +108,7 @@ namespace NgeeAnnCity
             buildings = new List<Building>();
 
             Console.WriteLine($"Starting Free Play Game, {playerName}!");
-
+            
             StartFreePlay();
         }
 
@@ -239,25 +239,45 @@ namespace NgeeAnnCity
                             case 3:
                                 if (!isFirstTurn)
                                 {
+                                    Console.WriteLine("");
                                     Console.WriteLine("Select a cell with a building to demolish it (1 coin cost), or key in X: 0 and Y: 0 to cancel.");
-                                    (int x, int y) = GetBuildLocation(isFirstTurn);
 
-                                    if (x == 0 && y == 0)
-                                    {
-                                        Console.WriteLine("Demolishing buildings cancelled.");
-                                        continue;
-                                    }
+                                    int x, y;
+                                    bool validCoordinates = false;
 
-                                    if (grid[x - 1, y - 1] != null)
+                                    while (!validCoordinates)
                                     {
-                                        RemoveBuilding(x - 1, y - 1);
-                                        coins++;
-                                        validInput = true;
-                                        turnNumber++;
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("No building found at the selected location. Please try again.");
+                                        Console.Write("Enter X (1-20): ");
+                                        if (!int.TryParse(Console.ReadLine(), out x) || x < 0 || x > 20)
+                                        {
+                                            Console.WriteLine("Invalid input. Please enter an integer between 1 and 20.");
+                                            continue;
+                                        }
+
+                                        Console.Write("Enter Y (1-20): ");
+                                        if (!int.TryParse(Console.ReadLine(), out y) || y < 0 || y > 20)
+                                        {
+                                            Console.WriteLine("Invalid input. Please enter an integer between 1 and 20.");
+                                            continue;
+                                        }
+
+                                        if (x == 0 && y == 0)
+                                        {
+                                            Console.WriteLine("Demolishing buildings cancelled.");
+                                            validCoordinates = true; // Exit the loop and cancel demolition
+                                        }
+                                        else if (grid[x - 1, y - 1] != null)
+                                        {
+                                            RemoveBuilding(x - 1, y - 1);
+                                            coins--; // Deduct 1 coin for demolition
+                                            validInput = true;
+                                            turnNumber++;
+                                            validCoordinates = true; // Exit the loop after successful demolition
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("No building found at the selected location. Please try again.");
+                                        }
                                     }
                                 }
                                 break;
@@ -306,6 +326,7 @@ namespace NgeeAnnCity
 
         private static void DisplayArcadeGrid()
         {
+            Console.WriteLine("");
             // Print the column labels
             Console.Write("     ");
             for (int i = 1; i <= gridSize; i++)
@@ -425,6 +446,7 @@ namespace NgeeAnnCity
                         case "5":
                             int choice = int.Parse(userInput);
                             BuildingType selectedBuilding = options[choice - 1];
+                            Console.WriteLine("");
                             Console.WriteLine($"You selected: {selectedBuilding}");
 
                             (int x, int y) = GetBuildLocation(isFirstTurn);
@@ -448,6 +470,7 @@ namespace NgeeAnnCity
                         case "6":
                             if (!isFirstTurn)
                             {
+                                Console.WriteLine("");
                                 Console.WriteLine("Select a cell with a building to demolish it, or key in X: 0 and Y: 0 to cancel.");
                                 (int x2, int y2) = GetBuildLocation(isFirstTurn);
 
@@ -499,6 +522,7 @@ namespace NgeeAnnCity
 
         private static void DisplayFreePlayGrid()
         {
+            Console.WriteLine("");
             // Print the column labels
             Console.Write("     ");
             for (int i = 1; i <= gridSize; i++)
@@ -578,6 +602,7 @@ namespace NgeeAnnCity
 
         private static void ExpandGrid()
         {
+            
             int newSize = Math.Min(gridSize + GridSizeIncrement, MaxGridSize);
             Building[,] newGrid = null;
 
@@ -593,6 +618,7 @@ namespace NgeeAnnCity
                 }
                 gridSize = newSize;
                 grid = newGrid;
+                Console.WriteLine("");
                 Console.WriteLine($"The city has expanded to {newSize}x{newSize}.");
             }
             else
@@ -630,6 +656,7 @@ namespace NgeeAnnCity
                 }
             }
             UpdateHighScores(playerName, CalculateScore(), highScoreFileName);
+            Console.WriteLine("");
             Console.WriteLine("Game saved successfully.");
         }
 
@@ -787,12 +814,14 @@ namespace NgeeAnnCity
                 {
                     if (grid[nx, ny] != null)
                     {
-                        Console.WriteLine($"Adjacent building found at ({nx}, {ny})");
+                        Console.WriteLine($"Adjacent building found at ({ny + 1}, {nx + 1})");
+                        Console.WriteLine("");
                         return true;
                     }
                 }
             }
             Console.WriteLine("No adjacent building found.");
+            Console.WriteLine("");
             return false;
         }
 
