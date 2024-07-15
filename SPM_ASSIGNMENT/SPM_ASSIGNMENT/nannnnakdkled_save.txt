@@ -1,8 +1,0 @@
-player name:nannnnakdkled
-coins:11
-turn:5
-score:4
-Residential,8,8
-Industry,9,8
-Residential,8,9
-Road,8,10

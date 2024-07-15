@@ -1,8 +1,0 @@
-player name:mamamma
-coins:6
-turn:5
-score:2
-Road,7,18
-Park,7,19
-Commercial,8,19
-Road,9,19
