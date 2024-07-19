@@ -1,0 +1,7 @@
+player name:test
+gridSize:15
+coins:17
+turn:3
+score:1
+Residential,2,3
+Industry,4,5
