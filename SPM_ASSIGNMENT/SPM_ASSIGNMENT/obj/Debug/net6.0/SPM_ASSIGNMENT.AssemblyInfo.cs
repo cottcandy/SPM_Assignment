@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SPM_ASSIGNMENT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f046c625b6715a6d9d78efbf75ae66432289a0db")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc9e76a1659664497b1f40930bd7820247ca2424")]
 [assembly: System.Reflection.AssemblyProductAttribute("SPM_ASSIGNMENT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SPM_ASSIGNMENT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
