@@ -28,7 +28,9 @@ namespace NgeeAnnCity
         private static int turnNumber = 1;
         private static string playerName;
         private static int gridSize;
-      
+        private static int score;
+
+        //private static List<HighScore> highScores = new List<HighScore>();
 
 
 
@@ -37,15 +39,17 @@ namespace NgeeAnnCity
             Console.WriteLine("Welcome to Ngee Ann City!");
             Console.Write("Enter your name: ");
             playerName = Console.ReadLine().Trim();
+            Console.WriteLine("");
+            Console.WriteLine($"Welcome, {playerName}!");
             coins = InitialCoins;
             DisplayMainMenu();
         }
 
         private static void DisplayMainMenu()
         {
+            string highScoreFileName = "high_scores.txt";
             while (true)
             {
-                Console.WriteLine($"Welcome, {playerName}!");
                 Console.WriteLine("");
                 Console.WriteLine("=== Main Menu ===");
                 Console.WriteLine("1. Start New Arcade Game");
@@ -56,6 +60,7 @@ namespace NgeeAnnCity
 
                 Console.Write("Choose an option (1-5): ");
                 string input = Console.ReadLine();
+                Console.WriteLine("");
 
                 switch (input)
                 {
@@ -69,7 +74,7 @@ namespace NgeeAnnCity
                         LoadSavedGame();
                         break;
                     case "4":
-                        // DisplayHighScores();
+                        DisplayAllHighScores(highScoreFileName);
                         break;
                     case "5":
                         Console.WriteLine("Exiting the game. Goodbye!");
@@ -79,6 +84,16 @@ namespace NgeeAnnCity
                         break;
                 }
             }
+        }
+
+        private static void InitializeGame(int size)
+        {
+            gridSize = size;
+            grid = new Building[gridSize, gridSize];
+            buildings = new List<Building>();
+            coins = InitialCoins;
+            turnNumber = 1;
+            playerName = "";
         }
 
         private static void StartArcadeGame()
@@ -221,12 +236,12 @@ namespace NgeeAnnCity
                                             validInput = false;
                                             break;
                                         }
-                                        else 
+                                        else
                                         {
-                                            
+
                                             continue;
                                         }
-                                        
+
                                     }
                                 }
                                 break;
@@ -234,30 +249,50 @@ namespace NgeeAnnCity
                             case 3:
                                 if (!isFirstTurn)
                                 {
+                                    Console.WriteLine("");
                                     Console.WriteLine("Select a cell with a building to demolish it (1 coin cost), or key in X: 0 and Y: 0 to cancel.");
-                                    (int x, int y) = GetBuildLocation(isFirstTurn);
 
-                                    if (x == 0 && y == 0)
-                                    {
-                                        Console.WriteLine("Demolishing buildings cancelled.");
-                                        continue;
-                                    }
+                                    int x, y;
+                                    bool validCoordinates = false;
 
-                                    if (grid[x - 1, y - 1] != null)
+                                    while (!validCoordinates)
                                     {
-                                        RemoveBuilding(x - 1, y - 1);
-                                        coins++;
-                                        validInput = true;
-                                        turnNumber++;
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("No building found at the selected location. Please try again.");
+                                        Console.Write("Enter X (1-20): ");
+                                        if (!int.TryParse(Console.ReadLine(), out x) || x < 0 || x > 20)
+                                        {
+                                            Console.WriteLine("Invalid input. Please enter an integer between 1 and 20.");
+                                            continue;
+                                        }
+
+                                        Console.Write("Enter Y (1-20): ");
+                                        if (!int.TryParse(Console.ReadLine(), out y) || y < 0 || y > 20)
+                                        {
+                                            Console.WriteLine("Invalid input. Please enter an integer between 1 and 20.");
+                                            continue;
+                                        }
+
+                                        if (x == 0 && y == 0)
+                                        {
+                                            Console.WriteLine("Demolishing buildings cancelled.");
+                                            validCoordinates = true; // Exit the loop and cancel demolition
+                                        }
+                                        else if (grid[y - 1, x - 1] != null)
+                                        {
+                                            RemoveBuilding(y - 1, x - 1);
+                                            coins--; // Deduct 1 coin for demolition
+                                            validInput = true;
+                                            turnNumber++;
+                                            validCoordinates = true; // Exit the loop after successful demolition
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("No building found at the selected location. Please try again.");
+                                        }
                                     }
                                 }
                                 break;
                             case 4:
-                                SaveGame();
+                                ArcadeSaveGame();
                                 break;
                             case 5:
                                 return; // Exit to Main Menu
@@ -301,6 +336,7 @@ namespace NgeeAnnCity
 
         private static void DisplayArcadeGrid()
         {
+            Console.WriteLine("");
             // Print the column labels
             Console.Write("     ");
             for (int i = 1; i <= gridSize; i++)
@@ -420,6 +456,7 @@ namespace NgeeAnnCity
                         case "5":
                             int choice = int.Parse(userInput);
                             BuildingType selectedBuilding = options[choice - 1];
+                            Console.WriteLine("");
                             Console.WriteLine($"You selected: {selectedBuilding}");
 
                             (int x, int y) = GetBuildLocation(isFirstTurn);
@@ -443,14 +480,10 @@ namespace NgeeAnnCity
                         case "6":
                             if (!isFirstTurn)
                             {
+                                Console.WriteLine("");
                                 Console.WriteLine("Select a cell with a building to demolish it, or key in X: 0 and Y: 0 to cancel.");
                                 (int x2, int y2) = GetBuildLocation(isFirstTurn);
 
-                                if (x2 == 0 && y2 == 0)
-                                {
-                                    Console.WriteLine("Demolishing buildings cancelled.");
-                                    continue;
-                                }
                                 if (x2 == 0 && y2 == 0)
                                 {
                                     Console.WriteLine("Demolishing buildings cancelled.");
@@ -477,7 +510,7 @@ namespace NgeeAnnCity
                             }
                             break;
                         case "7":
-                            SaveGame();
+                            FreePlaySaveGame();
                             break;
                         case "8":
                             return; // Exit to Main Menu
@@ -494,6 +527,7 @@ namespace NgeeAnnCity
 
         private static void DisplayFreePlayGrid()
         {
+            Console.WriteLine("");
             // Print the column labels
             Console.Write("     ");
             for (int i = 1; i <= gridSize; i++)
@@ -568,11 +602,12 @@ namespace NgeeAnnCity
                 }
                 Console.WriteLine("+");
             }
-            Console.WriteLine();
+            //Console.WriteLine();
         }
 
         private static void ExpandGrid()
         {
+
             int newSize = Math.Min(gridSize + GridSizeIncrement, MaxGridSize);
             Building[,] newGrid = null;
 
@@ -588,6 +623,7 @@ namespace NgeeAnnCity
                 }
                 gridSize = newSize;
                 grid = newGrid;
+                Console.WriteLine("");
                 Console.WriteLine($"The city has expanded to {newSize}x{newSize}.");
             }
             else
@@ -596,15 +632,18 @@ namespace NgeeAnnCity
             }
         }
 
-        private static void SaveGame()
+        private static void ArcadeSaveGame()
         {
-            string fileName = $"{playerName}_save.txt";
+            string fileName = $"{playerName}_arcade_save.txt";
+            string highScoreFileName = "high_scores.txt";
+            int gameNumber = 1;
+
             using (StreamWriter writer = new StreamWriter(fileName))
             {
-                writer.WriteLine(playerName);
-                writer.WriteLine(coins);
-                writer.WriteLine(turnNumber);
-                writer.WriteLine(CalculateScore());
+                writer.WriteLine($"player name:{playerName}");
+                writer.WriteLine($"coins:{coins}");
+                writer.WriteLine($"turn:{turnNumber}");
+                writer.WriteLine($"score:{CalculateScore()}");
 
                 for (int i = 0; i < gridSize; i++)
                 {
@@ -612,45 +651,93 @@ namespace NgeeAnnCity
                     {
                         if (grid[i, j] != null)
                         {
-                            writer.WriteLine($"{i},{j},{grid[i, j].Type}");
+                            writer.WriteLine($"{grid[i, j].Type},{j + 1},{i + 1}");
+                        }
+                    }
+                }
+            }
+            UpdateHighScores(playerName, CalculateScore(), highScoreFileName);
+            Console.WriteLine("");
+            Console.WriteLine("Game saved successfully.");
+        }
+
+        private static void FreePlaySaveGame()
+        {
+            string fileName = $"{playerName}_freeplay_save.txt";
+
+            int gameNumber = 1;
+
+            using (StreamWriter writer = new StreamWriter(fileName))
+            {
+                if (gameNumber > 1)
+                {
+                    writer.WriteLine();
+                }
+                writer.WriteLine($"player name:{playerName}");
+                writer.WriteLine($"gridSize:{gridSize}");
+                writer.WriteLine($"coins:{coins}");
+                writer.WriteLine($"turn:{turnNumber}");
+                writer.WriteLine($"score:{CalculateScore()}");
+
+                // Save the grid state
+                for (int i = 0; i < gridSize; i++)
+                {
+                    for (int j = 0; j < gridSize; j++)
+                    {
+                        if (grid[i, j] != null)
+                        {
+                            writer.WriteLine($"{grid[i, j].Type},{j + 1},{i + 1}");
                         }
                     }
                 }
             }
 
+            Console.WriteLine("");
             Console.WriteLine("Game saved successfully.");
         }
 
-        private static void LoadSavedGame()
+
+        private static void ArcadeLoadSavedGame()
         {
-            Console.Write("Enter the name of the saved game file: ");
-            string fileName = Console.ReadLine().Trim();
+            string fileName = $"{playerName}_arcade_save.txt";
 
             if (File.Exists(fileName))
             {
+                InitializeGame(ArcadeGridSize);
                 using (StreamReader reader = new StreamReader(fileName))
                 {
-                    playerName = reader.ReadLine();
-                    coins = int.Parse(reader.ReadLine());
-                    turnNumber = int.Parse(reader.ReadLine());
-
-                    grid = new Building[gridSize, gridSize];
-                    buildings = new List<Building>();
-
                     string line;
                     while ((line = reader.ReadLine()) != null)
                     {
-                        string[] parts = line.Split(',');
-                        int x = int.Parse(parts[0]);
-                        int y = int.Parse(parts[1]);
-                        BuildingType type = (BuildingType)Enum.Parse(typeof(BuildingType), parts[2]);
-
-                        Building building = new Building(type, x, y);
-                        grid[x, y] = building;
-                        buildings.Add(building);
+                        if (line.StartsWith("player name:"))
+                        {
+                            playerName = line.Split(':')[1]; // Set playerName from saved data
+                        }
+                        else if (line.StartsWith("turn:"))
+                        {
+                            turnNumber = int.Parse(line.Split(':')[1]); // Update turn number from saved data
+                        }
+                        else if (line.StartsWith("coins:"))
+                        {
+                            coins = int.Parse(line.Split(':')[1]); // Update coins from saved data
+                        }
+                        else if (line.StartsWith("score:"))
+                        {
+                            score = int.Parse(line.Split(':')[1]); // Update score from saved data
+                        }
+                        else if (line.Contains(','))
+                        {
+                            string[] parts = line.Split(',');
+                            if (parts.Length >= 3)
+                            {
+                                BuildingType type = Enum.Parse<BuildingType>(parts[0], true);
+                                int x = int.Parse(parts[1]) - 1;
+                                int y = int.Parse(parts[2]) - 1;
+                                PlaceBuilding(type, y, x); // Place buildings from saved data
+                            }
+                        }
                     }
                 }
-
                 Console.WriteLine("Game loaded successfully.");
                 StartArcade();
             }
@@ -660,42 +747,219 @@ namespace NgeeAnnCity
             }
         }
 
+        private static void FreePlayLoadSavedGame()
+        {
+            string fileName = $"{playerName}_freeplay_save.txt";
+
+            if (File.Exists(fileName))
+            {
+                using (StreamReader reader = new StreamReader(fileName))
+                {
+                    string line;
+                    int loadedGridSize = FreePlayInitialGridSize; // default initial grid size
+
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        if (line.StartsWith("gridSize:"))
+                        {
+                            int.TryParse(line.Split(':')[1].Trim(), out loadedGridSize);
+                            break;
+                        }
+                    }
+
+                    InitializeGame(loadedGridSize);
+
+                    reader.BaseStream.Seek(0, SeekOrigin.Begin);
+                    reader.DiscardBufferedData();
+
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        if (line.StartsWith("player name:"))
+                        {
+                            playerName = line.Split(':')[1].Trim();
+                        }
+                        else if (line.StartsWith("turn:"))
+                        {
+                            int parsedTurnNumber;
+                            if (int.TryParse(line.Split(':')[1].Trim(), out parsedTurnNumber))
+                            {
+                                turnNumber = parsedTurnNumber; // Update turn number from saved data
+                            }
+                            // No warning needed for failed parse
+                        }
+                        else if (line.StartsWith("coins:"))
+                        {
+                            int parsedCoins;
+                            if (int.TryParse(line.Split(':')[1].Trim(), out parsedCoins))
+                            {
+                                coins = parsedCoins; // Update coins from saved data
+                            }
+                            // No warning needed for failed parse
+                        }
+                        else if (line.StartsWith("score:"))
+                        {
+                            int parsedScore;
+                            if (int.TryParse(line.Split(':')[1].Trim(), out parsedScore))
+                            {
+                                score = parsedScore; // Update score from saved data
+                            }
+                            // No warning needed for failed parse
+                        }
+                        else if (line.Contains(','))
+                        {
+                            string[] parts = line.Split(',');
+                            if (parts.Length >= 3)
+                            {
+                                BuildingType type;
+                                if (Enum.TryParse(parts[0], true, out type))
+                                {
+                                    int x, y;
+                                    if (int.TryParse(parts[1].Trim(), out y) && int.TryParse(parts[2].Trim(), out x))
+                                    {
+                                        // Check if coordinates are within bounds
+                                        if (x >= 1 && x <= gridSize && y >= 1 && y <= gridSize)
+                                        {
+                                            PlaceBuilding(type, x - 1, y - 1); // Adjust coordinates (zero-indexed)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                Console.WriteLine("Game loaded successfully.");
+                //DisplayFreePlayGrid(); // Display the current grid after loading
+                StartFreePlay(); // Start the game or continue further actions
+            }
+            else
+            {
+                Console.WriteLine("Saved game file not found.");
+            }
+        }
+
+
+        private static void LoadSavedGame()
+        {
+            Console.WriteLine("Please choose the game mode to load:");
+            Console.WriteLine("1. Arcade mode");
+            Console.WriteLine("2. Free Play mode");
+            Console.Write("Enter your choice (1 or 2): ");
+            string choice = Console.ReadLine();
+            Console.WriteLine("");
+
+            switch (choice)
+            {
+                case "1":
+                    Console.WriteLine("Loading game in Arcade mode...");
+                    ArcadeLoadSavedGame();
+                    break;
+                case "2":
+                    Console.WriteLine("Loading game in Free Play mode...");
+                    FreePlayLoadSavedGame();
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please enter '1' or '2'.");
+                    break;
+            }
+        }
+
+        private static void UpdateHighScores(string playerName, int score, string highScoreFileName)
+        {
+            List<string> highScores = new List<string>();
+            if (File.Exists(highScoreFileName))
+            {
+                highScores = File.ReadAllLines(highScoreFileName).ToList();
+            }
+
+            bool updated = false;
+            for (int i = 0; i < highScores.Count; i++)
+            {
+                if (highScores[i].StartsWith($"{playerName}:"))
+                {
+                    int existingScore = int.Parse(highScores[i].Split(':')[1]);
+                    if (score > existingScore)
+                    {
+                        highScores[i] = $"{playerName}:{score}";
+                        updated = true;
+                    }
+                    break;
+                }
+            }
+
+            if (!updated)
+            {
+                highScores.Add($"{playerName}:{score}");
+            }
+
+            highScores.Sort((a, b) =>
+            {
+                int scoreA = int.Parse(a.Split(':')[1]);
+                int scoreB = int.Parse(b.Split(':')[1]);
+                return scoreB.CompareTo(scoreA);
+            });
+
+            // Trim the list to the top 5 scores
+            if (highScores.Count > 5)
+            {
+                highScores = highScores.Take(5).ToList();
+            }
+
+            File.WriteAllLines(highScoreFileName, highScores);
+        }
+
+        private static void DisplayAllHighScores(string highScoreFileName)
+        {
+            if (File.Exists(highScoreFileName))
+            {
+                string[] highScores = File.ReadAllLines(highScoreFileName).Take(5).ToArray(); // Read only the top 5 scores
+                Console.WriteLine("High Scores:");
+                foreach (string score in highScores)
+                {
+                    string[] parts = score.Split(':');
+                    Console.WriteLine($"{parts[0]} - {parts[1]}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No high scores found.");
+            }
+        }
+
         private static (int x, int y) GetBuildLocation(bool isFirstTurn)
         {
             int x, y;
 
             while (true)
             {
-                Console.Write("Enter X (1-20): ");
-                if (int.TryParse(Console.ReadLine(), out x) && x >= 1 && x <= 20)
+                Console.Write($"Enter X (1-{gridSize}): ");
+                if (int.TryParse(Console.ReadLine(), out x) && x >= 1 && x <= gridSize)
                 {
                     break;
                 }
                 else
                 {
-                    Console.WriteLine("Invalid input. Please enter an integer between 1 and 20.");
+                    Console.WriteLine($"Invalid input. Please enter an integer between 1 and {gridSize}.");
                 }
             }
 
             while (true)
             {
-                Console.Write("Enter Y (1-20): ");
-                if (int.TryParse(Console.ReadLine(), out y) && y >= 1 && y <= 20)
+                Console.Write($"Enter Y (1-{gridSize}): ");
+                if (int.TryParse(Console.ReadLine(), out y) && y >= 1 && y <= gridSize)
                 {
                     break;
                 }
                 else
                 {
-                    Console.WriteLine("Invalid input. Please enter an integer between 1 and 20.");
+                    Console.WriteLine($"Invalid input. Please enter an integer between 1 and {gridSize}.");
                 }
             }
 
             Console.WriteLine("");
 
             return (y, x);
-
         }
-            
+
 
         private static bool IsValidLocation(int x, int y, bool isFirstTurn)
         {
@@ -715,7 +979,7 @@ namespace NgeeAnnCity
             int[] dx = { -1, 1, 0, 0 };
             int[] dy = { 0, 0, -1, 1 };
 
-            Console.WriteLine($"Checking adjacency for ({y+1}, {x+1})");
+            Console.WriteLine($"Checking adjacency for ({y + 1}, {x + 1})");
 
             for (int i = 0; i < 4; i++)
             {
@@ -726,12 +990,14 @@ namespace NgeeAnnCity
                 {
                     if (grid[nx, ny] != null)
                     {
-                        Console.WriteLine($"Adjacent building found at ({nx}, {ny})");
+                        Console.WriteLine($"Adjacent building found at ({ny + 1}, {nx + 1})");
+                        Console.WriteLine("");
                         return true;
                     }
                 }
             }
             Console.WriteLine("No adjacent building found.");
+            Console.WriteLine("");
             return false;
         }
 
@@ -800,7 +1066,7 @@ namespace NgeeAnnCity
             grid[x, y] = null;
         }
 
-       private static int CalculateScore()
+        private static int CalculateScore()
         {
             int score = 0;
 
@@ -1062,7 +1328,6 @@ namespace NgeeAnnCity
 
             return upkeep;
         }
-
         private static bool IsConnectedRoad(int x, int y)
         {
             // Check if the road segment is connected to another road in the same row or column
@@ -1087,19 +1352,20 @@ namespace NgeeAnnCity
 
             return false;
         }
-
-
-    public class Building
-    {
-        public BuildingType Type { get; }
-        public int X { get; }
-        public int Y { get; }
-
-        public Building(BuildingType type, int x, int y)
+        public class Building
         {
-            Type = type;
-            X = x;
-            Y = y;
+            public BuildingType Type { get; }
+            public int X { get; }
+            public int Y { get; }
+
+            public Building(BuildingType type, int x, int y)
+            {
+                Type = type;
+                X = x;
+                Y = y;
+            }
         }
     }
-}}
+}
+
+
