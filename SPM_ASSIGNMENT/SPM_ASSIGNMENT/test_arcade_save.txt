@@ -1,6 +1,0 @@
-player name:test
-coins:14
-turn:5
-score:0
-Park,8,17
-Residential,7,18
