@@ -1,52 +1,24 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj": {}
-=======
-<<<<<<< HEAD
-    "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj": {}
->>>>>>> b295b1c8ba035b30dda30713dc72638c14dd3ee6
   },
   "projects": {
-    "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj": {
+    "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
         "projectName": "SPM_ASSIGNMENT",
-<<<<<<< HEAD
         "projectPath": "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\User\\Documents\\NP\\NP 2.1\\SPM\\code\\rahhhhhh\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\",
-=======
-        "projectPath": "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
-        "packagesPath": "C:\\Users\\Klaris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Klaris\\Documents\\NP\\Year 2\\Sem 1\\SPM\\assignment\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Klaris\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-    "C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
-        "projectName": "SPM_ASSIGNMENT",
-        "projectPath": "C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT.csproj",
-        "packagesPath": "C:\\Users\\nandi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nandi\\OneDrive - Ngee Ann Polytechnic\\NP\\2.1\\software project management\\SPM_Assignment\\SPM_ASSIGNMENT\\SPM_ASSIGNMENT\\obj\\",
->>>>>>> b295b1c8ba035b30dda30713dc72638c14dd3ee6
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-<<<<<<< HEAD
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-=======
-          "C:\\Users\\nandi\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> ed103477d13339b360e28e1cfc0ab4884c41d9f3
->>>>>>> b295b1c8ba035b30dda30713dc72638c14dd3ee6
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -87,15 +59,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
-=======
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
->>>>>>> ed103477d13339b360e28e1cfc0ab4884c41d9f3
->>>>>>> b295b1c8ba035b30dda30713dc72638c14dd3ee6
         }
       }
     }

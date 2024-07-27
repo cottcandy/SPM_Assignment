@@ -302,6 +302,7 @@ namespace NgeeAnnCity
         {
             Console.WriteLine(message);
             Console.WriteLine("Game Over!");
+            ArcadeSaveGame();
             Console.WriteLine($"Final Score: {CalculateScore()}");
             Console.WriteLine($"Total Turns: {turnNumber}");
             Console.WriteLine("Press any key to return to the Main Menu...");
